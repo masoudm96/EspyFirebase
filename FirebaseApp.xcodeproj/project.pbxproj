@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04519848225FDDC400A0E7BE /* global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04519847225FDDC400A0E7BE /* global.swift */; };
 		04FDF834225B0C5D00D71AD3 /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FDF833225B0C5D00D71AD3 /* UploadViewController.swift */; };
 		04FDF836225B0C7500D71AD3 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FDF835225B0C7500D71AD3 /* GalleryViewController.swift */; };
 		04FDF838225B0CAE00D71AD3 /* OutfitMakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FDF837225B0CAE00D71AD3 /* OutfitMakerViewController.swift */; };
@@ -52,6 +53,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04519847225FDDC400A0E7BE /* global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = global.swift; sourceTree = "<group>"; };
 		04FDF833225B0C5D00D71AD3 /* UploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
 		04FDF835225B0C7500D71AD3 /* GalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 		04FDF837225B0CAE00D71AD3 /* OutfitMakerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutfitMakerViewController.swift; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 		B0E78FD72024FDEF002DA8AF /* FirebaseApp */ = {
 			isa = PBXGroup;
 			children = (
+				04519847225FDDC400A0E7BE /* global.swift */,
 				04FDF83B225B0D3E00D71AD3 /* ColorOptions.swift */,
 				04FDF83A225B0D3E00D71AD3 /* JSONFileHandler.swift */,
 				04FDF839225B0D3E00D71AD3 /* wardrobe.json */,
@@ -371,6 +374,7 @@
 				"${PODS_ROOT}/Target Support Files/Pods-FirebaseApp/Pods-FirebaseApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -378,6 +382,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -405,6 +410,7 @@
 				04FDF83E225B0D3E00D71AD3 /* ColorOptions.swift in Sources */,
 				B0E79003202504FE002DA8AF /* MenuViewController.swift in Sources */,
 				B0E78FD92024FDEF002DA8AF /* AppDelegate.swift in Sources */,
+				04519848225FDDC400A0E7BE /* global.swift in Sources */,
 				B0E79002202504FE002DA8AF /* LoginViewController.swift in Sources */,
 				B08C14EC202E70080061819B /* UserService.swift in Sources */,
 				B0E79005202504FE002DA8AF /* RoundedWhiteButton.swift in Sources */,

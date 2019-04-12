@@ -36,7 +36,7 @@ class OutfitMakerViewController:UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.tabBar.isHidden = true
-        loadColors(viewController: self)
+        view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
         
         divisor = (view.frame.width / 2) / 0.61
         

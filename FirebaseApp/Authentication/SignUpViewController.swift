@@ -232,8 +232,8 @@ class SignUpViewController:UIViewController, UITextFieldDelegate {
     }
     
     func uploadProfileImage(_ image:UIImage, completion: @escaping ((_ url:URL?)->())) {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        let storageRef = Storage.storage().reference().child("user/\(uid)")
+        guard let user_email = Auth.auth().currentUser?.email else { return }
+        let storageRef = Storage.storage().reference().child("\(user_email)").child("/profile").child("profile_picture.jpg")
         
         guard let imageData = image.jpegData(compressionQuality: 0.75) else { return }
         
