@@ -455,7 +455,9 @@
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AfX-Iy-M5f">
                                 <rect key="frame" x="83" y="212.66666666666666" width="248" height="48.999999999999972"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="30"/>
-                                <state key="normal" title="Upload Image"/>
+                                <state key="normal" title="Upload Image">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="chooseImage:" destination="tx0-cZ-uig" eventType="touchUpInside" id="OC5-0a-pxP"/>
                                     <segue destination="UVw-JH-SWu" kind="show" identifier="segueToUpload" id="cjO-Nd-s7c"/>
@@ -464,22 +466,26 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HAE-mw-wP0">
                                 <rect key="frame" x="131.66666666666666" y="301.66666666666669" width="150.99999999999997" height="133"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="30"/>
-                                <state key="normal" title="Wardrobe"/>
+                                <state key="normal" title="Wardrobe">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="wardrobePressed:" destination="tx0-cZ-uig" eventType="touchUpInside" id="Op9-Jl-NaE"/>
-                                    <segue destination="pUH-QP-mAq" kind="show" id="D65-FY-ihv"/>
+                                    <segue destination="kBE-rW-bFw" kind="show" id="LvT-Z8-Sj6"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QDb-KL-dZz">
                                 <rect key="frame" x="106.66666666666669" y="474.66666666666669" width="201" height="49.000000000000057"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="30"/>
-                                <state key="normal" title="Outfit Viewer"/>
+                                <state key="normal" title="Outfit Viewer">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <segue destination="lMu-Gp-6vg" kind="show" id="RPV-Kp-gX8"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="AfX-Iy-M5f" firstAttribute="top" secondItem="6Ed-nK-hUC" secondAttribute="bottom" constant="148.5" id="6Jk-vG-eZT"/>
                             <constraint firstItem="AfX-Iy-M5f" firstAttribute="centerX" secondItem="QDb-KL-dZz" secondAttribute="centerX" id="8VK-Oj-5CT"/>
@@ -504,6 +510,47 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CvZ-d0-NW0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5802" y="-204"/>
+        </scene>
+        <!--Choice View Controller-->
+        <scene sceneID="AM0-Fc-BZn">
+            <objects>
+                <viewController storyboardIdentifier="ChoiceViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kBE-rW-bFw" customClass="ChoiceViewController" customModule="FirebaseApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="c5N-50-XUJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sUi-wI-tHN">
+                                <rect key="frame" x="60" y="232" width="294" height="49"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="30"/>
+                                <state key="normal" title="View Full Wardrobe">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="chooseImage:" destination="tx0-cZ-uig" eventType="touchUpInside" id="e5V-7Y-6wn"/>
+                                    <segue destination="pUH-QP-mAq" kind="show" id="aYP-R5-gx1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wzc-EE-9wH">
+                                <rect key="frame" x="114" y="403" width="186" height="49"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="30"/>
+                                <state key="normal" title="View Outfits">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="chooseImage:" destination="tx0-cZ-uig" eventType="touchUpInside" id="ZVi-FI-6iG"/>
+                                    <segue destination="Ev5-2A-rcw" kind="show" id="CY5-Sk-Icc"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="z2A-ka-bxW"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zvp-Te-6zr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6642" y="-214"/>
         </scene>
         <!--Gallery-->
         <scene sceneID="kJ5-Ff-21U">
@@ -532,7 +579,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZZZ-s3-yXx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6978" y="-170"/>
+            <point key="canvasLocation" x="7386" y="-489"/>
+        </scene>
+        <!--Outfit View Controller-->
+        <scene sceneID="Em3-4l-QU7">
+            <objects>
+                <viewController id="Ev5-2A-rcw" customClass="OutfitViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ysq-v7-oTS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="1g4-ku-khm"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uuX-QK-W4M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7386" y="162"/>
         </scene>
         <!--Outfit Maker-->
         <scene sceneID="jYX-Dw-WmK">
@@ -638,7 +700,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="6973.913043478261" y="573.88392857142856"/>
+            <point key="canvasLocation" x="5801" y="605"/>
         </scene>
         <!--Image-->
         <scene sceneID="Z7v-gs-COM">
@@ -648,51 +710,61 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JW5-oC-16c">
-                                <rect key="frame" x="102" y="500" width="30" height="30"/>
-                                <state key="normal" title="Top"/>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JW5-oC-16c">
+                                <rect key="frame" x="102" y="102" width="30" height="422"/>
+                                <state key="normal" title="Top">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="topPressed:" destination="UVw-JH-SWu" eventType="touchUpInside" id="Ijs-bM-7Q4"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NEG-yf-iY1">
                                 <rect key="frame" x="181.66666666666666" y="500" width="51" height="30"/>
-                                <state key="normal" title="Bottom"/>
+                                <state key="normal" title="Bottom">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="bottomPressed:" destination="UVw-JH-SWu" eventType="touchUpInside" id="g3C-Mz-luh"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jT0-bp-Vzk">
                                 <rect key="frame" x="282.66666666666669" y="500" width="43.333333333333314" height="30"/>
-                                <state key="normal" title="Shoes"/>
+                                <state key="normal" title="Shoes">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="shoesPressed:" destination="UVw-JH-SWu" eventType="touchUpInside" id="lDA-Pa-88V"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iKv-nb-qba">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iKv-nb-qba">
                                 <rect key="frame" x="190" y="655" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Save"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="savePressed:" destination="UVw-JH-SWu" eventType="touchUpInside" id="peU-qO-zbc"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CtF-gD-OkH">
-                                <rect key="frame" x="0.0" y="75" width="414" height="325"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CtF-gD-OkH">
+                                <rect key="frame" x="7" y="73" width="400" height="400"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="CtF-gD-OkH" secondAttribute="height" multiplier="293:230" id="Q0r-s9-4Yf"/>
+                                    <constraint firstAttribute="width" secondItem="CtF-gD-OkH" secondAttribute="height" multiplier="293:230" constant="-109.56521739130432" id="Q0r-s9-4Yf"/>
+                                    <constraint firstAttribute="width" secondItem="CtF-gD-OkH" secondAttribute="height" multiplier="414:325" constant="-109.53846153846155" id="caE-aH-CoV"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="JW5-oC-16c" firstAttribute="top" secondItem="CtF-gD-OkH" secondAttribute="bottom" constant="-371" id="95W-qp-IQb"/>
                             <constraint firstItem="NAt-x4-bKu" firstAttribute="trailing" secondItem="jT0-bp-Vzk" secondAttribute="trailing" constant="88" id="DIi-4L-pEE"/>
-                            <constraint firstItem="CtF-gD-OkH" firstAttribute="leading" secondItem="NAt-x4-bKu" secondAttribute="leading" id="O9v-EP-QYX"/>
+                            <constraint firstItem="CtF-gD-OkH" firstAttribute="centerX" secondItem="iKv-nb-qba" secondAttribute="centerX" id="Qvu-Vw-pEz"/>
+                            <constraint firstItem="NAt-x4-bKu" firstAttribute="bottom" secondItem="iKv-nb-qba" secondAttribute="bottom" constant="2" id="SrF-ud-Gqy"/>
                             <constraint firstItem="JW5-oC-16c" firstAttribute="leading" secondItem="NAt-x4-bKu" secondAttribute="leading" constant="102" id="X2w-iB-yNV"/>
                             <constraint firstItem="NEG-yf-iY1" firstAttribute="centerY" secondItem="eDb-km-j3S" secondAttribute="centerY" constant="147" id="XfD-CQ-LyQ"/>
-                            <constraint firstItem="CtF-gD-OkH" firstAttribute="top" secondItem="NAt-x4-bKu" secondAttribute="top" constant="11" id="Y16-pq-77y"/>
+                            <constraint firstItem="CtF-gD-OkH" firstAttribute="top" secondItem="NAt-x4-bKu" secondAttribute="top" constant="9" id="Y16-pq-77y"/>
                             <constraint firstItem="jT0-bp-Vzk" firstAttribute="baseline" secondItem="NEG-yf-iY1" secondAttribute="baseline" id="aBb-7e-42N"/>
-                            <constraint firstItem="NAt-x4-bKu" firstAttribute="trailing" secondItem="CtF-gD-OkH" secondAttribute="trailing" id="c6t-x1-aqO"/>
+                            <constraint firstItem="CtF-gD-OkH" firstAttribute="centerX" secondItem="NEG-yf-iY1" secondAttribute="centerX" id="cY4-N8-FC4"/>
                             <constraint firstItem="NEG-yf-iY1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="JW5-oC-16c" secondAttribute="trailing" constant="8" symbolic="YES" id="ckv-S2-G2j"/>
                             <constraint firstItem="jT0-bp-Vzk" firstAttribute="leading" secondItem="NEG-yf-iY1" secondAttribute="trailing" constant="50" id="g2g-Vh-80k"/>
                             <constraint firstItem="NEG-yf-iY1" firstAttribute="centerX" secondItem="eDb-km-j3S" secondAttribute="centerX" id="mcU-pm-L2m"/>
@@ -702,11 +774,12 @@
                     </view>
                     <connections>
                         <outlet property="ImageView" destination="CtF-gD-OkH" id="hX3-ez-rBu"/>
+                        <outlet property="topTagButton" destination="JW5-oC-16c" id="cLL-qk-rrS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C6e-vy-NID" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6981.6000000000004" y="-863.1184407796103"/>
+            <point key="canvasLocation" x="5801" y="-940"/>
         </scene>
         <!--InitialViewController-->
         <scene sceneID="kDb-3g-3Yd">

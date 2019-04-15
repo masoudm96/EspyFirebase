@@ -12,6 +12,7 @@ import Firebase
 
 class UploadViewController:UIViewController{
     
+    @IBOutlet weak var topTagButton: UIButton!
     @IBOutlet weak var ImageView: UIImageView!
     var previewImage : UIImage?
     var data = Data()
@@ -29,6 +30,11 @@ class UploadViewController:UIViewController{
         /*CHANGE TAG TO TOP*/
         tag = "top"
         Clothing.key_tag = tag
+        if tag == "top"{
+            topTagButton.backgroundColor = UIColor.gray
+        } else {
+            topTagButton.backgroundColor = UIColor.clear
+        }
     }
     
     @IBAction func bottomPressed(_ sender: Any) {
@@ -46,67 +52,55 @@ class UploadViewController:UIViewController{
     
     @IBAction func savePressed(_ sender: Any) {
         if Clothing.key_tag != ""{
+            //save image
             let image = ImageView.image
             guard let imageData = image?.jpegData(compressionQuality: 0.75) else { return }
             guard let user_email = Auth.auth().currentUser?.email else { return }
-            let storageRef = Storage.storage().reference().child("\(user_email)").child("\(tag)").child("\(Number(tag: tag)).jpg")
+            
+            let storageRef = Storage.storage().reference().child("\(user_email)").child("\(tag)").child("\(Clothing.top_images.count+1).jpg")
             
             
             let metaData = StorageMetadata()
             metaData.contentType = "image/jpg"
+            
+            //Upload image to Database
             storageRef.putData(imageData, metadata: nil, completion: {(metadata, Error) in
                 print(metaData)
                 
-                // alerts don't popup, need to be fixed
-                //let alert = UIAlertController(title: "Tag " + self.tag + " chosen", message: nil, preferredStyle: .alert)
-                //alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
-                    //navigationController?.popViewController(animated: true)
-                    //dismiss(animated: true, completion: nil)
+            //save URL for access of image later
+            let downloadURL = metaData.downloadURL()
+            //Update to the database with the new url
+                let key = self.dbRef.childByAutoId().key
+                let image = ["url": downloadURL?.absoluteString]
+                
+            self.navigationController?.popViewController(animated: true)
+            self.dismiss(animated: true, completion: nil)
+            
             })
             
             if(Clothing.key_tag == "top")
             {
                 Clothing.top_array.append(storageRef)
+                Clothing.top_images.append(image!)
             }
                 
             else if(Clothing.key_tag == "bottom")
             {
                 Clothing.bottom_array.append(storageRef)
+                Clothing.bottom_images.append(image!)
+
             }
             else
             {
                 Clothing.shoes_array.append(storageRef)
+                Clothing.shoes_images.append(image!)
+
             }
         }
         
         else{
             let alert = UIAlertController(title: "No Tag Chosen", message: nil, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
-        }
-    }
-    
-    // this will make sure every file uploaded will start with the value 1,
-    // with respect to the tag chosen
-    func Number(tag: String) -> Int{
-        struct Value{
-            static var topcounter = 0
-            static var bottomcounter = 0
-            static var shoescounter = 0
-        }
-        
-        if(tag == "top")
-        {
-            Value.topcounter += 1
-            return Value.topcounter
-        }
-        else if(tag == "bottom")
-        {
-            Value.bottomcounter += 1
-            return Value.bottomcounter
-        }
-        else{
-            Value.shoescounter += 1
-            return Value.shoescounter
         }
     }
     
