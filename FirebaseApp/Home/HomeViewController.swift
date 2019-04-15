@@ -94,24 +94,23 @@ class HomeViewController:UIViewController, UIImagePickerControllerDelegate, UINa
         picker.dismiss(animated: true, completion: nil)
     }
     
-    private func loadImageFromDatabaseIndex(imageNum: Int) -> UIImage{
-        var loadedImage:UIImage?
-        let url = URL(string: "??")
-        URLSession.shared.dataTask(with: url!, completionHandler: {(data, response, error) in
-            
-            if error != nil{
-                print(error!)
-                return
-            }
-            loadedImage = UIImage(data: data!)
-        })
-        return loadedImage!
-    }
+//    private func loadImageFromDatabaseIndex(imageNum: Int) -> UIImage{
+//        var loadedImage:UIImage?
+//        let url = URL(string: "??")
+//        URLSession.shared.dataTask(with: url!, completionHandler: {(data, response, error) in
+//
+//            if error != nil{
+//                print(error!)
+//                return
+//            }
+//            loadedImage = UIImage(data: data!)
+//        })
+//        return loadedImage!
+//    }
     
     func loadImagesFromDataBase(){
         var i = 0
         var bufferImage = UIImage()
-        var e:Error?
         var file_string:String?
         var reference:StorageReference?
 
@@ -124,8 +123,7 @@ class HomeViewController:UIViewController, UIImagePickerControllerDelegate, UINa
             reference = storageRef.child("\(user_email)").child("/top").child(file_string!)
             reference!.getData(maxSize: 1 * 1024 * 1024) {data, error in
                 if error != nil {
-                    e = error
-                    print(error as Any)
+                    print(error!)
                 } else {
                     bufferImage = UIImage(data: data!)!
                     UploadViewController.Clothing.top_images.append(bufferImage)

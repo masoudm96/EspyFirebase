@@ -52,8 +52,8 @@ class UploadViewController:UIViewController{
     
     @IBAction func savePressed(_ sender: Any) {
         if Clothing.key_tag != ""{
-            //save image
             let image = ImageView.image
+            
             guard let imageData = image?.jpegData(compressionQuality: 0.75) else { return }
             guard let user_email = Auth.auth().currentUser?.email else { return }
             
@@ -62,20 +62,13 @@ class UploadViewController:UIViewController{
             
             let metaData = StorageMetadata()
             metaData.contentType = "image/jpg"
-            
-            //Upload image to Database
+             
             storageRef.putData(imageData, metadata: nil, completion: {(metadata, Error) in
                 print(metaData)
                 
-            //save URL for access of image later
-            let downloadURL = metaData.downloadURL()
-            //Update to the database with the new url
-                let key = self.dbRef.childByAutoId().key
-                let image = ["url": downloadURL?.absoluteString]
                 
             self.navigationController?.popViewController(animated: true)
             self.dismiss(animated: true, completion: nil)
-            
             })
             
             if(Clothing.key_tag == "top")
