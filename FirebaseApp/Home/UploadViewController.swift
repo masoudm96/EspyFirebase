@@ -16,7 +16,6 @@ class UploadViewController:UIViewController{
     @IBOutlet weak var ImageView: UIImageView!
     var previewImage : UIImage?
     var data = Data()
-    public var tag : String = ""
     var fileName : String = "wardrobe.txt"
     
     override func viewDidLoad() {
@@ -28,9 +27,8 @@ class UploadViewController:UIViewController{
     
     @IBAction func topPressed(_ sender: Any) {
         /*CHANGE TAG TO TOP*/
-        tag = "top"
-        Clothing.key_tag = tag
-        if tag == "top"{
+        Outfit.key_tag = "top"
+        if Outfit.key_tag == "top"{
             topTagButton.backgroundColor = UIColor.gray
         } else {
             topTagButton.backgroundColor = UIColor.clear
@@ -39,72 +37,136 @@ class UploadViewController:UIViewController{
     
     @IBAction func bottomPressed(_ sender: Any) {
         /*CHANGE TAG TO BOTTOM*/
-        tag = "bottom"
-        Clothing.key_tag = tag
+        Outfit.key_tag = "bottom"
+        if Outfit.key_tag == "bottom"{
+            topTagButton.backgroundColor = UIColor.gray
+        } else {
+            topTagButton.backgroundColor = UIColor.clear
+        }
     }
     
     @IBAction func shoesPressed(_ sender: Any) {
         /*CHANGE TAG TO SHOES*/
-        tag = "shoes"
-        Clothing.key_tag = tag
+        Outfit.key_tag = "shoes"
+        if Outfit.key_tag == "shoes"{
+            topTagButton.backgroundColor = UIColor.gray
+        } else {
+            topTagButton.backgroundColor = UIColor.clear
+        }
     }
     
     
     @IBAction func savePressed(_ sender: Any) {
-        if Clothing.key_tag != ""{
+        if Outfit.key_tag != ""{
             let image = ImageView.image
             
             guard let imageData = image?.jpegData(compressionQuality: 0.75) else { return }
             guard let user_email = Auth.auth().currentUser?.email else { return }
             
-            let storageRef = Storage.storage().reference().child("\(user_email)").child("\(tag)").child("\(Clothing.top_images.count+1).jpg")
-            
-            
-            let metaData = StorageMetadata()
-            metaData.contentType = "image/jpg"
-             
-            storageRef.putData(imageData, metadata: nil, completion: {(metadata, Error) in
-                print(metaData)
-                
-                
-            self.navigationController?.popViewController(animated: true)
-            self.dismiss(animated: true, completion: nil)
-            })
-            
-            if(Clothing.key_tag == "top")
+            if(Outfit.key_tag == "top")
             {
-                Clothing.top_array.append(storageRef)
-                Clothing.top_images.append(image!)
+                let storageRef = Storage.storage().reference().child("\(user_email)").child("\(Outfit.key_tag)").child("\(Int(Outfit.topCounter) + 1).jpg")
+                
+                Outfit.topCounter = Outfit.topCounter + 1
+                
+                let data = [
+                    
+                    "topCount" : Outfit.topCounter,
+                    "bottomCount" : Outfit.bottomCounter,
+                    "shoesCount" : Outfit.shoesCounter
+                ]
+                
+            Database.database().reference().child("user_data").child(Auth.auth().currentUser!.uid).updateChildValues(data)
+                
+                
+                let metaData = StorageMetadata()
+                metaData.contentType = "image/jpg"
+                
+                storageRef.putData(imageData, metadata: nil, completion: {(metadata, Error) in
+                    print(metaData)
+                    
+                    Outfit.top_array.append(storageRef)
+                    Outfit.top_images.append(image!)
+                    
+                    self.navigationController?.popViewController(animated: true)
+                    self.dismiss(animated: true, completion: nil)
+                })
+                
             }
                 
-            else if(Clothing.key_tag == "bottom")
+            else if(Outfit.key_tag == "bottom")
             {
-                Clothing.bottom_array.append(storageRef)
-                Clothing.bottom_images.append(image!)
-
+                let storageRef = Storage.storage().reference().child("\(user_email)").child("\(Outfit.key_tag)").child("\(Int(Outfit.bottomCounter) + 1).jpg")
+                
+                Outfit.bottomCounter = Outfit.bottomCounter + 1
+                
+                let data = [
+                    
+                    "topCount" : Outfit.topCounter,
+                    "bottomCount" : Outfit.bottomCounter,
+                    "shoesCount" : Outfit.shoesCounter
+                ]
+                
+            Database.database().reference().child("user_data").child(Auth.auth().currentUser!.uid).updateChildValues(data)
+                
+                let metaData = StorageMetadata()
+                metaData.contentType = "image/jpg"
+                
+                storageRef.putData(imageData, metadata: nil, completion: {(metadata, Error) in
+                    print(metaData)
+                    
+                    Outfit.bottom_array.append(storageRef)
+                    Outfit.bottom_images.append(image!)
+                    
+                    self.navigationController?.popViewController(animated: true)
+                    self.dismiss(animated: true, completion: nil)
+                })
             }
             else
             {
-                Clothing.shoes_array.append(storageRef)
-                Clothing.shoes_images.append(image!)
-
+                let storageRef = Storage.storage().reference().child("\(user_email)").child("\(Outfit.key_tag)").child("\(Int(Outfit.shoesCounter) + 1).jpg")
+                
+                Outfit.shoesCounter = Outfit.shoesCounter + 1
+                
+                let data = [
+                    
+                    "topCount" : Outfit.topCounter,
+                    "bottomCount" : Outfit.bottomCounter,
+                    "shoesCount" : Outfit.shoesCounter
+                ]
+                
+            Database.database().reference().child("user_data").child(Auth.auth().currentUser!.uid).updateChildValues(data)
+                
+                let metaData = StorageMetadata()
+                metaData.contentType = "image/jpg"
+                
+                storageRef.putData(imageData, metadata: nil, completion: {(metadata, Error) in
+                    print(metaData)
+                    
+                    Outfit.shoes_array.append(storageRef)
+                    Outfit.shoes_images.append(image!)
+                    
+                    self.navigationController?.popViewController(animated: true)
+                    self.dismiss(animated: true, completion: nil)
+                })
             }
         }
         
         else{
-            let alert = UIAlertController(title: "No Tag Chosen", message: nil, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+           let alert = UIAlertController(title: "Alert", message: "No tag chosen", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                switch action.style{
+                case .default:
+                    print("default")
+                    
+                case .cancel:
+                    print("cancel")
+                    
+                case .destructive:
+                    print("destructive")
+                    
+                    
+                }}))
         }
-    }
-    
-    struct Clothing{
-        static var key_tag = String()
-        static var top_array: [StorageReference] = []
-        static var bottom_array: [StorageReference] = []
-        static var shoes_array: [StorageReference] = []
-        
-        static var top_images: [UIImage] = []
-        static var bottom_images: [UIImage] = []
-        static var shoes_images: [UIImage] = []
     }
 }

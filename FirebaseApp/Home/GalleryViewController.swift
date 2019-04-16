@@ -19,8 +19,8 @@ class GalleryViewController:UIViewController{
         super.viewDidLoad()
         view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
         self.tabBarController?.tabBar.isHidden = true
-        if UploadViewController.Clothing.top_images.count > 0{
-            imageView.image = UploadViewController.Clothing.top_images.last
+        if Outfit.top_images.count > 0{
+            imageView.image = Outfit.top_images.last
         }
     }
 }

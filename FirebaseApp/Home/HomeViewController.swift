@@ -22,7 +22,7 @@ class HomeViewController:UIViewController, UIImagePickerControllerDelegate, UINa
         self.tabBarController?.tabBar.isHidden = true
         
         //loadImagesFromDataBase()
-        print(UploadViewController.Clothing.top_images.count)
+        print(Outfit.top_images.count)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -109,27 +109,69 @@ class HomeViewController:UIViewController, UIImagePickerControllerDelegate, UINa
 //    }
     
     func loadImagesFromDataBase(){
-        var i = 0
         var bufferImage = UIImage()
         var file_string:String?
         var reference:StorageReference?
 
         guard let user_email = Auth.auth().currentUser?.email else { return }
-        let storageRef = Storage.storage().reference()
-
-            i += 1
+        let storageRef = Storage.storage().reference().child("\(user_email)")
+        
+        let ref = Database.database().reference().child("user_data").child(Auth.auth().currentUser!.uid)
+        ref.observeSingleEvent(of: .value, with: { snapshot in
+            
+            if !snapshot.exists() { return }
+            
+            let top_number = snapshot.childSnapshot(forPath: "topCount").value
+            let bottom_number = snapshot.childSnapshot(forPath: "bottomCount").value
+            let shoes_number = snapshot.childSnapshot(forPath: "shoesCount").value
+            
+            Outfit.topCounter = top_number as! Int
+            Outfit.bottomCounter = bottom_number as! Int
+            Outfit.shoesCounter = shoes_number as! Int
+        })
+        
+        
+        for i in 1 ... Outfit.topCounter{
             // Reference to an image file in Firebase Storage
             file_string = String(i) + ".jpg"
-            reference = storageRef.child("\(user_email)").child("/top").child(file_string!)
+            reference = storageRef.child("/top").child(file_string!)
             reference!.getData(maxSize: 1 * 1024 * 1024) {data, error in
                 if error != nil {
                     print(error!)
                 } else {
                     bufferImage = UIImage(data: data!)!
-                    UploadViewController.Clothing.top_images.append(bufferImage)
+                    Outfit.top_images.append(bufferImage)
                 }
             }
-
+        }
+        
+        for i in 1 ... Outfit.bottomCounter{
+            // Reference to an image file in Firebase Storage
+            file_string = String(i) + ".jpg"
+            reference = storageRef.child("/bottom").child(file_string!)
+            reference!.getData(maxSize: 1 * 1024 * 1024) {data, error in
+                if error != nil {
+                    print(error!)
+                } else {
+                    bufferImage = UIImage(data: data!)!
+                    Outfit.bottom_images.append(bufferImage)
+                }
+            }
+        }
+        
+        for i in 1 ... Outfit.shoesCounter{
+            // Reference to an image file in Firebase Storage
+            file_string = String(i) + ".jpg"
+            reference = storageRef.child("/shoes").child(file_string!)
+            reference!.getData(maxSize: 1 * 1024 * 1024) {data, error in
+                if error != nil {
+                    print(error!)
+                } else {
+                    bufferImage = UIImage(data: data!)!
+                    Outfit.shoes_images.append(bufferImage)
+                }
+            }
+        }
     }
     
     private func loadImageFromDatabaseIndex(imageNum: Int) -> UIImage

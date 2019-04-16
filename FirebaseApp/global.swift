@@ -11,9 +11,17 @@ import UIKit
 import Firebase
 import FirebaseUI
 
-public class Global{
-    static var name_tag: String?
-    var top_array: [Storage] = []
-    var bottom_array: [Storage] = []
-    var shoes_array: [Storage] = []
+class Outfit{
+    static var key_tag = String()
+    static var top_array: [StorageReference] = []
+    static var bottom_array: [StorageReference] = []
+    static var shoes_array: [StorageReference] = []
+    
+    static var top_images: [UIImage] = []
+    static var bottom_images: [UIImage] = []
+    static var shoes_images: [UIImage] = []
+    
+    static var topCounter: Int = 0
+    static var bottomCounter: Int = 0
+    static var shoesCounter: Int = 0
 }

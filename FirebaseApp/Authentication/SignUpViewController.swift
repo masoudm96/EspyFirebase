@@ -198,6 +198,7 @@ class SignUpViewController:UIViewController, UITextFieldDelegate {
                                 
                                 self.saveProfile(username: username, profileImageURL: url!) { success in
                                     if success {
+                                        self.saveOutfitCounters()
                                         self.dismiss(animated: true, completion: nil)
                                     } else {
                                         self.resetForm()
@@ -266,6 +267,17 @@ class SignUpViewController:UIViewController, UITextFieldDelegate {
         databaseRef.setValue(userObject) { error, ref in
             completion(error == nil)
         }
+    }
+    
+    func saveOutfitCounters()
+    {
+        let data = [
+            "topCount" : Outfit.topCounter,
+            "bottomCount" : Outfit.bottomCounter,
+            "shoesCount" : Outfit.shoesCounter
+        ]
+        
+        Database.database().reference().child("user_data").child(Auth.auth().currentUser!.uid).setValue(data)
     }
 }
 
