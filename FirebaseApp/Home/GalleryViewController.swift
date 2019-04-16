@@ -12,15 +12,19 @@ import UIKit
 import FirebaseUI
 
 class GalleryViewController:UIViewController{
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var rawImage: UIImageView!
+   
+    @IBOutlet weak var imageView1: UIImageView!
+    @IBOutlet weak var imageView2: UIImageView!
+    @IBOutlet weak var imageView3: UIImageView!
+    @IBOutlet weak var imageView4: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
         self.tabBarController?.tabBar.isHidden = true
+        print(Outfit.top_images.count)
         if Outfit.top_images.count > 0{
-            imageView.image = Outfit.top_images.last
+            //imageView1.image = Outfit.top_images[0]
         }
     }
 }

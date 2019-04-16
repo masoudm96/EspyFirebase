@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2cF-Wv-Sll">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2cF-Wv-Sll">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -561,11 +561,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k2n-Fx-3Bv">
-                                <rect key="frame" x="87" y="159" width="240" height="128"/>
+                                <rect key="frame" x="87" y="74" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d5S-47-MbH">
-                                <rect key="frame" x="87" y="404" width="240" height="128"/>
+                                <rect key="frame" x="87" y="210" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C0T-va-004">
+                                <rect key="frame" x="87" y="346" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9iJ-ym-irt">
+                                <rect key="frame" x="87" y="482" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -573,8 +581,10 @@
                         <viewLayoutGuide key="safeArea" id="iQt-7c-Tls"/>
                     </view>
                     <connections>
-                        <outlet property="imageView" destination="k2n-Fx-3Bv" id="NyG-xY-bXV"/>
-                        <outlet property="rawImage" destination="d5S-47-MbH" id="0a8-kd-Dul"/>
+                        <outlet property="imageView1" destination="k2n-Fx-3Bv" id="Wg1-hT-4Jg"/>
+                        <outlet property="imageView2" destination="d5S-47-MbH" id="Hno-Fg-wSn"/>
+                        <outlet property="imageView3" destination="C0T-va-004" id="hPr-qi-Qwt"/>
+                        <outlet property="imageView4" destination="9iJ-ym-irt" id="kEh-UW-WCd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZZZ-s3-yXx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -873,7 +883,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="backArrow" width="33.333332061767578" height="33.333332061767578"/>
+        <image name="backArrow" width="33" height="33"/>
         <image name="espy_white_letter" width="626" height="626"/>
         <image name="userIcon" width="50" height="50"/>
     </resources>
