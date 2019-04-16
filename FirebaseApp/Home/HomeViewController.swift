@@ -34,6 +34,9 @@ class HomeViewController:UIViewController, UIImagePickerControllerDelegate, UINa
     }
     
     @IBAction func handleLogout(_ sender:Any) {
+        Outfit.topCounter = 0
+        Outfit.bottomCounter = 0
+        Outfit.shoesCounter = 0
         try! Auth.auth().signOut()
     }
     

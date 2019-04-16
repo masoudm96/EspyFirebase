@@ -12,6 +12,8 @@ import Firebase
 
 class UploadViewController:UIViewController{
     
+    @IBOutlet weak var shoesTagButton: UIButton!
+    @IBOutlet weak var bottomTagButton: UIButton!
     @IBOutlet weak var topTagButton: UIButton!
     @IBOutlet weak var ImageView: UIImageView!
     var previewImage : UIImage?
@@ -39,9 +41,9 @@ class UploadViewController:UIViewController{
         /*CHANGE TAG TO BOTTOM*/
         Outfit.key_tag = "bottom"
         if Outfit.key_tag == "bottom"{
-            topTagButton.backgroundColor = UIColor.gray
+            bottomTagButton.backgroundColor = UIColor.gray
         } else {
-            topTagButton.backgroundColor = UIColor.clear
+            bottomTagButton.backgroundColor = UIColor.clear
         }
     }
     
@@ -49,9 +51,9 @@ class UploadViewController:UIViewController{
         /*CHANGE TAG TO SHOES*/
         Outfit.key_tag = "shoes"
         if Outfit.key_tag == "shoes"{
-            topTagButton.backgroundColor = UIColor.gray
+            shoesTagButton.backgroundColor = UIColor.gray
         } else {
-            topTagButton.backgroundColor = UIColor.clear
+            shoesTagButton.backgroundColor = UIColor.clear
         }
     }
     
@@ -65,6 +67,20 @@ class UploadViewController:UIViewController{
             
             if(Outfit.key_tag == "top")
             {
+                let ref = Database.database().reference().child("user_data").child(Auth.auth().currentUser!.uid)
+                ref.observeSingleEvent(of: .value, with: { snapshot in
+                    
+                    if !snapshot.exists() { return }
+                    
+                    let top_number = snapshot.childSnapshot(forPath: "topCount").value
+                    let bottom_number = snapshot.childSnapshot(forPath: "bottomCount").value
+                    let shoes_number = snapshot.childSnapshot(forPath: "shoesCount").value
+                    
+                    Outfit.topCounter = top_number as! Int
+                    Outfit.bottomCounter = bottom_number as! Int
+                    Outfit.shoesCounter = shoes_number as! Int
+                })
+                
                 let storageRef = Storage.storage().reference().child("\(user_email)").child("\(Outfit.key_tag)").child("\(Int(Outfit.topCounter) + 1).jpg")
                 
                 Outfit.topCounter = Outfit.topCounter + 1
@@ -76,7 +92,7 @@ class UploadViewController:UIViewController{
                     "shoesCount" : Outfit.shoesCounter
                 ]
                 
-            Database.database().reference().child("user_data").child(Auth.auth().currentUser!.uid).updateChildValues(data)
+                Database.database().reference().child("user_data").child(Auth.auth().currentUser!.uid).updateChildValues(data)
                 
                 
                 let metaData = StorageMetadata()
@@ -96,6 +112,23 @@ class UploadViewController:UIViewController{
                 
             else if(Outfit.key_tag == "bottom")
             {
+                let ref = Database.database().reference().child("user_data").child(Auth.auth().currentUser!.uid)
+                ref.observeSingleEvent(of: .value, with: { snapshot in
+                    
+                    if !snapshot.exists() { return }
+                    
+                    let top_number = snapshot.childSnapshot(forPath: "topCount").value
+                    let bottom_number = snapshot.childSnapshot(forPath: "bottomCount").value
+                    let shoes_number = snapshot.childSnapshot(forPath: "shoesCount").value
+                    
+                    Outfit.topCounter = top_number as! Int
+                    Outfit.bottomCounter = bottom_number as! Int
+                    Outfit.shoesCounter = shoes_number as! Int
+                })
+                
+                
+                
+                
                 let storageRef = Storage.storage().reference().child("\(user_email)").child("\(Outfit.key_tag)").child("\(Int(Outfit.bottomCounter) + 1).jpg")
                 
                 Outfit.bottomCounter = Outfit.bottomCounter + 1
@@ -107,7 +140,7 @@ class UploadViewController:UIViewController{
                     "shoesCount" : Outfit.shoesCounter
                 ]
                 
-            Database.database().reference().child("user_data").child(Auth.auth().currentUser!.uid).updateChildValues(data)
+                Database.database().reference().child("user_data").child(Auth.auth().currentUser!.uid).updateChildValues(data)
                 
                 let metaData = StorageMetadata()
                 metaData.contentType = "image/jpg"
@@ -124,6 +157,24 @@ class UploadViewController:UIViewController{
             }
             else
             {
+                let ref = Database.database().reference().child("user_data").child(Auth.auth().currentUser!.uid)
+                ref.observeSingleEvent(of: .value, with: { snapshot in
+                    
+                    if !snapshot.exists() { return }
+                    
+                    let top_number = snapshot.childSnapshot(forPath: "topCount").value
+                    let bottom_number = snapshot.childSnapshot(forPath: "bottomCount").value
+                    let shoes_number = snapshot.childSnapshot(forPath: "shoesCount").value
+                    
+                    Outfit.topCounter = top_number as! Int
+                    Outfit.bottomCounter = bottom_number as! Int
+                    Outfit.shoesCounter = shoes_number as! Int
+                })
+                
+                
+                
+                
+                
                 let storageRef = Storage.storage().reference().child("\(user_email)").child("\(Outfit.key_tag)").child("\(Int(Outfit.shoesCounter) + 1).jpg")
                 
                 Outfit.shoesCounter = Outfit.shoesCounter + 1
@@ -135,7 +186,7 @@ class UploadViewController:UIViewController{
                     "shoesCount" : Outfit.shoesCounter
                 ]
                 
-            Database.database().reference().child("user_data").child(Auth.auth().currentUser!.uid).updateChildValues(data)
+                Database.database().reference().child("user_data").child(Auth.auth().currentUser!.uid).updateChildValues(data)
                 
                 let metaData = StorageMetadata()
                 metaData.contentType = "image/jpg"
@@ -151,9 +202,9 @@ class UploadViewController:UIViewController{
                 })
             }
         }
-        
+            
         else{
-           let alert = UIAlertController(title: "Alert", message: "No tag chosen", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Alert", message: "No tag chosen", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
                 switch action.style{
                 case .default:

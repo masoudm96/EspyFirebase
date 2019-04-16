@@ -773,6 +773,8 @@
                     </view>
                     <connections>
                         <outlet property="ImageView" destination="CtF-gD-OkH" id="hX3-ez-rBu"/>
+                        <outlet property="bottomTagButton" destination="NEG-yf-iY1" id="Lob-6G-qRv"/>
+                        <outlet property="shoesTagButton" destination="jT0-bp-Vzk" id="dwi-j2-yPc"/>
                         <outlet property="topTagButton" destination="JW5-oC-16c" id="cLL-qk-rrS"/>
                     </connections>
                 </viewController>
