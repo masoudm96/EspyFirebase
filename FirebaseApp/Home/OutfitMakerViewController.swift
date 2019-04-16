@@ -29,10 +29,6 @@ class OutfitMakerViewController:UIViewController{
     var headerSize:CGFloat = 0.0
     var origin = CGPoint(x: 0.0, y: 0.0)
     
-    var topImages = [UIImage]()
-    var bottomImages = [UIImage]()
-    var shoeImages = [UIImage]()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.tabBar.isHidden = true
@@ -66,7 +62,7 @@ class OutfitMakerViewController:UIViewController{
             shoesImageView.image = Outfit.shoes_images[0]
         }
     }
-
+    
     @IBAction func panTop(_ sender: UIPanGestureRecognizer) {
         let card = sender.view!
         let point = sender.translation(in: view)
@@ -86,13 +82,13 @@ class OutfitMakerViewController:UIViewController{
                 card.transform = CGAffineTransform.identity
                 //load next picture
                 //check if out of bounds
-                if( topIndex - 1 > 0 ){
-                    topIndex -= 1
+                if( topIndex + 1 < Outfit.top_images.count ){
+                    topIndex += 1
                     topImageView.image = Outfit.top_images[topIndex]
                 }else{
                     print("All Images used")
-                    topIndex = Outfit.top_images.count
-                    topImageView.image = Outfit.top_images.last
+                    topIndex = 0
+                    topImageView.image = Outfit.top_images[0]
                 }
                 UIView.animate(withDuration: 0.2,
                                animations: {
@@ -109,13 +105,13 @@ class OutfitMakerViewController:UIViewController{
                 card.transform = CGAffineTransform.identity
                 //load next picture
                 //check if out of bounds
-                if( topIndex + 1 < topImages.count ){
+                if( topIndex + 1 < Outfit.top_images.count ){
                     topIndex += 1
-                    topImageView.image = topImages[topIndex]
+                    topImageView.image = Outfit.top_images[topIndex]
                 }else{
                     print("All Images used")
                     topIndex = 0
-                    topImageView.image = topImages[0]
+                    topImageView.image = Outfit.top_images[0]
                 }
                 UIView.animate(withDuration: 0.2,
                                animations: {
@@ -155,13 +151,13 @@ class OutfitMakerViewController:UIViewController{
                 })
                 card.center = CGPoint(x: origin.x, y: origin.y)
                 //load next picture
-                if( topIndex + 1 < topImages.count ){
+                if( topIndex + 1 < Outfit.bottom_images.count ){
                     topIndex += 1
-                    topImageView.image = topImages[topIndex]
+                    topImageView.image = Outfit.top_images[topIndex]
                 }else{
                     print("All Images used")
                     topIndex = 0
-                    topImageView.image = topImages[0]
+                    topImageView.image = Outfit.bottom_images[0]
                 }
                 UIView.animate(withDuration: 0.2,
                                animations: {
