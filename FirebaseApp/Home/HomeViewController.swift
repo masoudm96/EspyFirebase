@@ -131,24 +131,62 @@ class HomeViewController:UIViewController, UIImagePickerControllerDelegate, UINa
             Outfit.bottomCounter = bottom_number as! Int
             Outfit.shoesCounter = shoes_number as! Int
             
-            print("Top Counter: " + String(Outfit.topCounter))
-            for i in 0 ... Outfit.topCounter - 1{
-                // Reference to an image file in Firebase Storage
-                print(i)
-                file_string = String(i+1) + ".jpg"
-                reference = storageRef.child("/top").child(file_string!)
-                reference!.getData(maxSize: 1 * 1024 * 1024) {data, error in
-                    if error != nil {
-                        print(error!)
-                    } else {
-                        print("Top Image: " + file_string!)
-                        bufferImage = UIImage(data: data!)!
-                        Outfit.top_images.append(bufferImage!)
+            if(Outfit.bottomCounter > 0){
+                for i in 0 ... Outfit.topCounter - 1{
+                    // Reference to an image file in Firebase Storage
+                    file_string = String(i+1) + ".jpg"
+                    reference = storageRef.child("/top").child(file_string!)
+                    reference!.getData(maxSize: 1 * 1024 * 1024) {data, error in
+                        if error != nil {
+                            print(error!)
+                        } else {
+                            //print("Top Image: " + file_string!)
+                            bufferImage = UIImage(data: data!)!
+                            
+                            Outfit.top_images.append(bufferImage!)
+                        }
                     }
                 }
             }
             
-            print("Number of Images Found in top: \(Outfit.top_images.count)")
+            if(Outfit.bottomCounter > 0){
+                for i in 0 ... Outfit.bottomCounter - 1{
+                    // Reference to an image file in Firebase Storage
+                    file_string = String(i+1) + ".jpg"
+                    reference = storageRef.child("/bottom").child(file_string!)
+                    reference!.getData(maxSize: 1 * 1024 * 1024) {data, error in
+                        if error != nil {
+                            print(error!)
+                        } else {
+                            //print("Bottom Image: " + file_string!)
+                            bufferImage = UIImage(data: data!)!
+                            
+                            Outfit.bottom_images.append(bufferImage!)
+                        }
+                    }
+                }
+            }
+            
+            if(Outfit.shoesCounter > 0){
+                for i in 0 ... Outfit.shoesCounter {
+                    // Reference to an image file in Firebase Storage
+                    file_string = String(i+1) + ".jpg"
+                    reference = storageRef.child("/shoes").child(file_string!)
+                    reference!.getData(maxSize: 1 * 1024 * 1024) {data, error in
+                        if error != nil {
+                            print(error!)
+                        } else {
+                            //print("Shoes Image: " + file_string!)
+                            bufferImage = UIImage(data: data!)!
+                            
+                            Outfit.shoes_images.append(bufferImage!)
+                        }
+                    }
+                }
+            }
+            
+            
+            //print("Number of Images Found in top: \(Outfit.top_images.count)")
             
             
         })

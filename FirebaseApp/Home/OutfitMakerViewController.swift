@@ -40,30 +40,6 @@ class OutfitMakerViewController:UIViewController{
         
         divisor = (view.frame.width / 2) / 0.61
         
-        var loadItems = [Clothing]()
-        
-        
-        do{
-            loadItems = try loadFromJSONFile(filename: "wardrobe")
-        } catch let error {
-            print("Error Occured Loading File: \(error)")
-        }
-        if loadItems.count > 0{
-            for i in 0...loadItems.count-1 {
-                if let data = Data(base64Encoded: loadItems[i].image, options: .ignoreUnknownCharacters){
-                    if loadItems[i].tag == "top"{
-                        topImages.append(UIImage(data: data)!)
-                    }else if loadItems[i].tag == "bottom"{
-                        bottomImages.append(UIImage(data: data)!)
-                    }else if loadItems[i].tag == "shoes"{
-                        shoeImages.append(UIImage(data: data)!)
-                    }else{
-                        print("Image with unknown tag: \(loadItems[i].tag)")
-                    }
-                }
-            }
-        }
-        
         headerSize = UIScreen.main.bounds.size.height * 0.035
         origin = CGPoint(x: UIScreen.main.bounds.size.width*0.5, y: UIScreen.main.bounds.size.height*0.5 + headerSize)
         padding = (UIScreen.main.bounds.size.height * 0.01) + bottomView.frame.size.height
@@ -72,22 +48,22 @@ class OutfitMakerViewController:UIViewController{
         topView.center = CGPoint(x: origin.x, y: origin.y - padding)
         shoesView.center = CGPoint(x: origin.x, y: origin.y + padding)
         
-        if topImages.isEmpty {
+        if Outfit.top_images.isEmpty {
             print("No TOP image found")
         }else{
-            topImageView.image = topImages[0]
+            topImageView.image = Outfit.top_images[0]
         }
         
-        if bottomImages.isEmpty {
+        if Outfit.bottom_images.isEmpty {
             print("No BOTTOM image found")
         }else{
-            bottomImageView.image = bottomImages[0]
+            bottomImageView.image = Outfit.bottom_images[0]
         }
         
-        if shoeImages.isEmpty {
+        if Outfit.shoes_images.isEmpty {
             print("No SHOES image found")
         }else{
-            shoesImageView.image = shoeImages[0]
+            shoesImageView.image = Outfit.shoes_images[0]
         }
     }
 
@@ -110,13 +86,13 @@ class OutfitMakerViewController:UIViewController{
                 card.transform = CGAffineTransform.identity
                 //load next picture
                 //check if out of bounds
-                if( topIndex + 1 < topImages.count ){
-                    topIndex += 1
-                    topImageView.image = topImages[topIndex]
+                if( topIndex - 1 > 0 ){
+                    topIndex -= 1
+                    topImageView.image = Outfit.top_images[topIndex]
                 }else{
                     print("All Images used")
-                    topIndex = 0
-                    topImageView.image = topImages[0]
+                    topIndex = Outfit.top_images.count
+                    topImageView.image = Outfit.top_images.last
                 }
                 UIView.animate(withDuration: 0.2,
                                animations: {

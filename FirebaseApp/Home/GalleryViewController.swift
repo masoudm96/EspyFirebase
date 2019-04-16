@@ -24,7 +24,11 @@ class GalleryViewController:UIViewController{
         self.tabBarController?.tabBar.isHidden = true
         print(Outfit.top_images.count)
         if Outfit.top_images.count > 0{
-            //imageView1.image = Outfit.top_images[0]
+            imageView1.image = Outfit.top_images[0]
+            imageView2.image = Outfit.top_images[1]
+            imageView3.image = Outfit.top_images[2]
+            imageView4.image = Outfit.top_images[3
+            ]
         }
     }
 }
