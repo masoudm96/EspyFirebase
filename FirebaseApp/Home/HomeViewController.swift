@@ -168,7 +168,7 @@ class HomeViewController:UIViewController, UIImagePickerControllerDelegate, UINa
             }
             
             if(Outfit.shoesCounter > 0){
-                for i in 0 ... Outfit.shoesCounter {
+                for i in 0 ... Outfit.shoesCounter - 1 {
                     // Reference to an image file in Firebase Storage
                     file_string = String(i+1) + ".jpg"
                     reference = storageRef.child("/shoes").child(file_string!)
@@ -184,48 +184,7 @@ class HomeViewController:UIViewController, UIImagePickerControllerDelegate, UINa
                     }
                 }
             }
-            
-            
-            //print("Number of Images Found in top: \(Outfit.top_images.count)")
-            
-            
         })
-        
-        
-        
-        
-        
-        /*if Outfit.bottomCounter > 0{
-         for i in 1 ... Outfit.bottomCounter{
-         // Reference to an image file in Firebase Storage
-         file_string = String(i) + ".jpg"
-         reference = storageRef.child("/bottom").child(file_string!)
-         reference!.getData(maxSize: 1 * 1024 * 1024) {data, error in
-         if error != nil {
-         print(error!)
-         } else {
-         bufferImage = UIImage(data: data!)!
-         Outfit.bottom_images.append(bufferImage!)
-         }
-         }
-         }
-         }
-         
-         if Outfit.shoesCounter > 0{
-         for i in 1 ... Outfit.shoesCounter{
-         // Reference to an image file in Firebase Storage
-         file_string = String(i) + ".jpg"
-         reference = storageRef.child("/shoes").child(file_string!)
-         reference!.getData(maxSize: 1 * 1024 * 1024) {data, error in
-         if error != nil {
-         print(error!)
-         } else {
-         bufferImage = UIImage(data: data!)!
-         Outfit.shoes_images.append(bufferImage!)
-         }
-         }
-         }
-         }*/
         
         
     }

@@ -12,7 +12,6 @@
 		04FDF834225B0C5D00D71AD3 /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FDF833225B0C5D00D71AD3 /* UploadViewController.swift */; };
 		04FDF836225B0C7500D71AD3 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FDF835225B0C7500D71AD3 /* GalleryViewController.swift */; };
 		04FDF838225B0CAE00D71AD3 /* OutfitMakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FDF837225B0CAE00D71AD3 /* OutfitMakerViewController.swift */; };
-		04FDF83C225B0D3E00D71AD3 /* wardrobe.json in Resources */ = {isa = PBXBuildFile; fileRef = 04FDF839225B0D3E00D71AD3 /* wardrobe.json */; };
 		04FDF83D225B0D3E00D71AD3 /* JSONFileHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FDF83A225B0D3E00D71AD3 /* JSONFileHandler.swift */; };
 		04FDF83E225B0D3E00D71AD3 /* ColorOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FDF83B225B0D3E00D71AD3 /* ColorOptions.swift */; };
 		04FDF853225D723500D71AD3 /* Montserrat-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04FDF840225D723500D71AD3 /* Montserrat-LightItalic.ttf */; };
@@ -61,7 +60,6 @@
 		04FDF833225B0C5D00D71AD3 /* UploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
 		04FDF835225B0C7500D71AD3 /* GalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 		04FDF837225B0CAE00D71AD3 /* OutfitMakerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutfitMakerViewController.swift; sourceTree = "<group>"; };
-		04FDF839225B0D3E00D71AD3 /* wardrobe.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = wardrobe.json; sourceTree = "<group>"; };
 		04FDF83A225B0D3E00D71AD3 /* JSONFileHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONFileHandler.swift; sourceTree = "<group>"; };
 		04FDF83B225B0D3E00D71AD3 /* ColorOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorOptions.swift; sourceTree = "<group>"; };
 		04FDF840225D723500D71AD3 /* Montserrat-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-LightItalic.ttf"; sourceTree = "<group>"; };
@@ -248,7 +246,6 @@
 				04519847225FDDC400A0E7BE /* global.swift */,
 				04FDF83B225B0D3E00D71AD3 /* ColorOptions.swift */,
 				04FDF83A225B0D3E00D71AD3 /* JSONFileHandler.swift */,
-				04FDF839225B0D3E00D71AD3 /* wardrobe.json */,
 				B0E78FD82024FDEF002DA8AF /* AppDelegate.swift */,
 				B0E78FDF2024FDEF002DA8AF /* Assets.xcassets */,
 				B08C14E6202CE5E20061819B /* Models */,
@@ -349,7 +346,6 @@
 				04FDF85E225D723500D71AD3 /* Montserrat-ExtraLightItalic.ttf in Resources */,
 				04FDF864225D723500D71AD3 /* Montserrat-SemiBoldItalic.ttf in Resources */,
 				04FDF85D225D723500D71AD3 /* Montserrat-SemiBold.ttf in Resources */,
-				04FDF83C225B0D3E00D71AD3 /* wardrobe.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
