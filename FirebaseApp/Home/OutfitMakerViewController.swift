@@ -284,8 +284,8 @@ class OutfitMakerViewController:UIViewController{
         
     Database.database().reference().child("user_data").child(Auth.auth().currentUser!.uid).updateChildValues(data)
         
-        //let imageData: NSData = newImage.jpegData(compressionQuality: 0.75)! as NSData
-        guard let imageData = newImage.jpegData(compressionQuality: 0.5) else { return }
+        let imageData: NSData = newImage.jpegData(compressionQuality: 0.2)! as NSData
+        //guard let imageData = newImage.jpegData(compressionQuality: 0.5) else { return }
         
         storageRef.putData(imageData as Data, metadata: nil, completion: {(metadata, Error) in
             print(metadata as Any)
