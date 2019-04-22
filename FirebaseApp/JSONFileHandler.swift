@@ -1,10 +1,11 @@
 //
 //  JsonHandler.swift
-//  Espy
+//  FirebaseApp
 //
-//  Created by Alexander L Kharag on 3/6/19.
-//  Copyright © 2019 Desislava Nacheva. All rights reserved.
+//  Created by Masoud Sasha Desi on 4/7/19.
+//  Copyright © Espy Team 8. All rights reserved.
 //
+
 import Foundation
 import UIKit
 

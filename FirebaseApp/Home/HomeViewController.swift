@@ -2,8 +2,8 @@
 //  HomeViewController.swift
 //  FirebaseApp
 //
-//  Created by Robert Canton on 2018-02-02.
-//  Copyright © 2018 Robert Canton. All rights reserved.
+//  Created by Masoud Sasha Desi on 4/7/19.
+//  Copyright © Espy Team 8. All rights reserved.
 //
 
 import Foundation
@@ -21,8 +21,15 @@ class HomeViewController:UIViewController, UIImagePickerControllerDelegate, UINa
         view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
         self.tabBarController?.tabBar.isHidden = true
         
+        //loading annimation button
+        let activityIndicator = UIActivityIndicatorView(style: .gray)
+        view.addSubview(activityIndicator)
+        activityIndicator.frame = view.bounds
+        activityIndicator.startAnimating()
+        
         loadImagesFromDataBase()
         //print("Number of Images Found in top: \(Outfit.top_images.count)")
+        activityIndicator.removeFromSuperview()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -37,10 +44,12 @@ class HomeViewController:UIViewController, UIImagePickerControllerDelegate, UINa
         Outfit.topCounter = 0
         Outfit.bottomCounter = 0
         Outfit.shoesCounter = 0
+        Outfit.outfitCounter = 0
         
         Outfit.top_images.removeAll()
         Outfit.bottom_images.removeAll()
         Outfit.shoes_images.removeAll()
+        Outfit.outfit_images.removeAll()
         
         Outfit.top_array.removeAll()
         Outfit.bottom_array.removeAll()
@@ -122,21 +131,24 @@ class HomeViewController:UIViewController, UIImagePickerControllerDelegate, UINa
             let top_number = snapshot.childSnapshot(forPath: "topCount").value
             let bottom_number = snapshot.childSnapshot(forPath: "bottomCount").value
             let shoes_number = snapshot.childSnapshot(forPath: "shoesCount").value
+            let outfit_number = snapshot.childSnapshot(forPath: "outfitCount").value
             
             print("Top number: " + String((top_number as! Int)))
             print("Bottom number: " + String((bottom_number as! Int)))
             print("Shoes number: " + String((shoes_number as! Int)))
+            print("Outfit number: " + String((outfit_number as! Int)))
             
             Outfit.topCounter = (top_number as! Int)
             Outfit.bottomCounter = bottom_number as! Int
             Outfit.shoesCounter = shoes_number as! Int
+            Outfit.outfitCounter = outfit_number as! Int
             
-            if(Outfit.bottomCounter > 0){
+            if(Outfit.topCounter > 0){
                 for i in 0 ... Outfit.topCounter - 1{
                     // Reference to an image file in Firebase Storage
                     file_string = String(i+1) + ".jpg"
                     reference = storageRef.child("/top").child(file_string!)
-                    reference!.getData(maxSize: 1 * 1024 * 1024) {data, error in
+                    reference!.getData(maxSize: 1 * 4096 * 4096) {data, error in
                         if error != nil {
                             print(error!)
                         } else {
@@ -154,7 +166,7 @@ class HomeViewController:UIViewController, UIImagePickerControllerDelegate, UINa
                     // Reference to an image file in Firebase Storage
                     file_string = String(i+1) + ".jpg"
                     reference = storageRef.child("/bottom").child(file_string!)
-                    reference!.getData(maxSize: 1 * 1024 * 1024) {data, error in
+                    reference!.getData(maxSize: 1 * 4096 * 4096) {data, error in
                         if error != nil {
                             print(error!)
                         } else {
@@ -172,7 +184,7 @@ class HomeViewController:UIViewController, UIImagePickerControllerDelegate, UINa
                     // Reference to an image file in Firebase Storage
                     file_string = String(i+1) + ".jpg"
                     reference = storageRef.child("/shoes").child(file_string!)
-                    reference!.getData(maxSize: 1 * 1024 * 1024) {data, error in
+                    reference!.getData(maxSize: 1 * 4096 * 4096) {data, error in
                         if error != nil {
                             print(error!)
                         } else {
@@ -184,8 +196,25 @@ class HomeViewController:UIViewController, UIImagePickerControllerDelegate, UINa
                     }
                 }
             }
+            
+            if(Outfit.outfitCounter > 0){
+                for i in 0 ... Outfit.outfitCounter - 1 {
+                    // Reference to an image file in Firebase Storage
+                    file_string = String(i+1) + ".jpg"
+                    reference = storageRef.child("/outfits").child(file_string!)
+                    reference!.getData(maxSize: 1 * 4096 * 4096) {data, error in
+                        if error != nil {
+                            print(error!)
+                        } else {
+                            //print("Shoes Image: " + file_string!)
+                            bufferImage = UIImage(data: data!)!
+                            
+                            Outfit.outfit_images.append(bufferImage!)
+                        }
+                    }
+                }
+            }
         })
-        
         
     }
     
@@ -199,7 +228,7 @@ class HomeViewController:UIViewController, UIImagePickerControllerDelegate, UINa
         let file_string = String(imageNum + 1) + ".jpg"
         let reference = storageRef.child("\(user_email)").child("/top").child(file_string)
         
-        reference.getData(maxSize: 1 * 1024 * 1024) {data, error in
+        reference.getData(maxSize: 1 * 4096 * 4096) {data, error in
             if error != nil {
                 print("Error finding image \(imageNum + 1)")
             } else {

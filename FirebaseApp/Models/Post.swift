@@ -2,8 +2,8 @@
 //  Post.swift
 //  FirebaseApp
 //
-//  Created by Robert Canton on 2018-02-08.
-//  Copyright © 2018 Robert Canton. All rights reserved.
+//  Created by Masoud Sasha Desi on 4/7/19.
+//  Copyright © Espy Team 8. All rights reserved.
 //
 
 import Foundation

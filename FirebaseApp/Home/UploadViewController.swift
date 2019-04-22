@@ -2,8 +2,8 @@
 //  UploadViewController.swift
 //  FirebaseApp
 //
-//  Created by Masoud Sasha on 4/7/19.
-//  Copyright © 2019 Robert Canton. All rights reserved.
+//  Created by Masoud Sasha Desi on 4/7/19.
+//  Copyright © Espy Team 8. All rights reserved.
 //
 
 import Foundation
@@ -75,10 +75,12 @@ class UploadViewController:UIViewController{
                     let top_number = snapshot.childSnapshot(forPath: "topCount").value
                     let bottom_number = snapshot.childSnapshot(forPath: "bottomCount").value
                     let shoes_number = snapshot.childSnapshot(forPath: "shoesCount").value
+                    let outfit_number = snapshot.childSnapshot(forPath: "outfitCount").value
                     
-                    Outfit.topCounter = top_number as! Int
+                    Outfit.topCounter = (top_number as! Int)
                     Outfit.bottomCounter = bottom_number as! Int
                     Outfit.shoesCounter = shoes_number as! Int
+                    Outfit.outfitCounter = outfit_number as! Int
                 })
                 
                 let storageRef = Storage.storage().reference().child("\(user_email)").child("\(Outfit.key_tag)").child("\(Int(Outfit.topCounter) + 1).jpg")
@@ -89,7 +91,8 @@ class UploadViewController:UIViewController{
                     
                     "topCount" : Outfit.topCounter,
                     "bottomCount" : Outfit.bottomCounter,
-                    "shoesCount" : Outfit.shoesCounter
+                    "shoesCount" : Outfit.shoesCounter,
+                    "outfitCount" : Outfit.outfitCounter
                 ]
                 
                 Database.database().reference().child("user_data").child(Auth.auth().currentUser!.uid).updateChildValues(data)
@@ -120,10 +123,12 @@ class UploadViewController:UIViewController{
                     let top_number = snapshot.childSnapshot(forPath: "topCount").value
                     let bottom_number = snapshot.childSnapshot(forPath: "bottomCount").value
                     let shoes_number = snapshot.childSnapshot(forPath: "shoesCount").value
+                    let outfit_number = snapshot.childSnapshot(forPath: "outfitCount").value
                     
-                    Outfit.topCounter = top_number as! Int
+                    Outfit.topCounter = (top_number as! Int)
                     Outfit.bottomCounter = bottom_number as! Int
                     Outfit.shoesCounter = shoes_number as! Int
+                    Outfit.outfitCounter = outfit_number as! Int
                 })
                 
                 
@@ -137,7 +142,8 @@ class UploadViewController:UIViewController{
                     
                     "topCount" : Outfit.topCounter,
                     "bottomCount" : Outfit.bottomCounter,
-                    "shoesCount" : Outfit.shoesCounter
+                    "shoesCount" : Outfit.shoesCounter,
+                    "outfitCount" : Outfit.outfitCounter
                 ]
                 
                 Database.database().reference().child("user_data").child(Auth.auth().currentUser!.uid).updateChildValues(data)
@@ -165,10 +171,12 @@ class UploadViewController:UIViewController{
                     let top_number = snapshot.childSnapshot(forPath: "topCount").value
                     let bottom_number = snapshot.childSnapshot(forPath: "bottomCount").value
                     let shoes_number = snapshot.childSnapshot(forPath: "shoesCount").value
+                    let outfit_number = snapshot.childSnapshot(forPath: "outfitCount").value
                     
-                    Outfit.topCounter = top_number as! Int
+                    Outfit.topCounter = (top_number as! Int)
                     Outfit.bottomCounter = bottom_number as! Int
                     Outfit.shoesCounter = shoes_number as! Int
+                    Outfit.outfitCounter = outfit_number as! Int
                 })
                 
                 
@@ -183,7 +191,8 @@ class UploadViewController:UIViewController{
                     
                     "topCount" : Outfit.topCounter,
                     "bottomCount" : Outfit.bottomCounter,
-                    "shoesCount" : Outfit.shoesCounter
+                    "shoesCount" : Outfit.shoesCounter,
+                    "outfitCount" : Outfit.outfitCounter
                 ]
                 
                 Database.database().reference().child("user_data").child(Auth.auth().currentUser!.uid).updateChildValues(data)

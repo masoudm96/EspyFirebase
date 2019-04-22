@@ -2,8 +2,8 @@
 //  OutfitMakerViewController.swift
 //  FirebaseApp
 //
-//  Created by Masoud Sasha on 4/7/19.
-//  Copyright © 2019 Robert Canton. All rights reserved.
+//  Created by Masoud Sasha Desi on 4/7/19.
+//  Copyright © Espy Team 8. All rights reserved.
 //
 
 import Foundation
@@ -252,5 +252,49 @@ class OutfitMakerViewController:UIViewController{
                 })
             }
         }
+    }
+    
+    @IBAction func saveOutfit(_ sender: Any) {
+        let topImage = Outfit.top_images[topIndex]
+        let bottomImage = Outfit.bottom_images[bottomIndex]
+        let shoesImage = Outfit.shoes_images[shoeIndex]
+        
+        let size = CGSize(width: (topImage.size.width), height: (topImage.size.height) + (bottomImage.size.height) + (shoesImage.size.height))
+        UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
+        
+        topImage.draw(in: CGRect(x:0, y:0, width:size.width, height: (topImage.size.height)))
+        bottomImage.draw(in: CGRect(x:0, y:(topImage.size.height), width: size.width,  height: (bottomImage.size.height)))
+        shoesImage.draw(in: CGRect(x:0, y:(topImage.size.height + bottomImage.size.height), width: size.width,  height: (bottomImage.size.height)))
+        
+        let newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        guard let user_email = Auth.auth().currentUser?.email else { return }
+        let storageRef = Storage.storage().reference().child("\(user_email)").child("/outfits").child("\(Outfit.outfitCounter + 1).jpg")
+        
+        Outfit.outfitCounter = Outfit.outfitCounter + 1
+        
+        let data = [
+            
+            "topCount" : Outfit.topCounter,
+            "bottomCount" : Outfit.bottomCounter,
+            "shoesCount" : Outfit.shoesCounter,
+            "outfitCount" : Outfit.outfitCounter
+        ]
+        
+    Database.database().reference().child("user_data").child(Auth.auth().currentUser!.uid).updateChildValues(data)
+        
+        //let imageData: NSData = newImage.jpegData(compressionQuality: 0.75)! as NSData
+        guard let imageData = newImage.jpegData(compressionQuality: 0.5) else { return }
+        
+        storageRef.putData(imageData as Data, metadata: nil, completion: {(metadata, Error) in
+            print(metadata as Any)
+            
+            Outfit.outfit_array.append(storageRef)
+            Outfit.outfit_images.append(newImage)
+            
+            self.navigationController?.popViewController(animated: true)
+            self.dismiss(animated: true, completion: nil)
+        })
     }
 }

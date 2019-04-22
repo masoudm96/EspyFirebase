@@ -1,9 +1,9 @@
 //
 //  ColorOptions.swift
-//  Espy
+//  FirebaseApp
 //
-//  Created by DMCADMIN on 3/12/19.
-//  Copyright © 2019 Desislava Nacheva. All rights reserved.
+//  Created by Masoud Sasha Desi on 4/7/19.
+//  Copyright © Espy Team 8. All rights reserved.
 //
 
 import UIKit

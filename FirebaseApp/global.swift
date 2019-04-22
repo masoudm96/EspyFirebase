@@ -2,8 +2,8 @@
 //  global.swift
 //  FirebaseApp
 //
-//  Created by Masoud Sasha on 4/11/19.
-//  Copyright © 2019 Robert Canton. All rights reserved.
+//  Created by Masoud Sasha Desi on 4/7/19.
+//  Copyright © Espy Team 8. All rights reserved.
 //
 
 import Foundation
@@ -16,12 +16,15 @@ class Outfit{
     static var top_array: [StorageReference] = []
     static var bottom_array: [StorageReference] = []
     static var shoes_array: [StorageReference] = []
+    static var outfit_array: [StorageReference] = []
     
     static var top_images: [UIImage] = []
     static var bottom_images: [UIImage] = []
     static var shoes_images: [UIImage] = []
+    static var outfit_images: [UIImage] = []
     
     static var topCounter: Int = 0
     static var bottomCounter: Int = 0
     static var shoesCounter: Int = 0
+    static var outfitCounter: Int = 0
 }

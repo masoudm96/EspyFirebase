@@ -51,7 +51,7 @@
 		B0E79004202504FE002DA8AF /* HelperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E78FFF202504FD002DA8AF /* HelperExtensions.swift */; };
 		B0E79005202504FE002DA8AF /* RoundedWhiteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E79000202504FE002DA8AF /* RoundedWhiteButton.swift */; };
 		C8FBFBE82263D5D80088840E /* ChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FBFBE72263D5D80088840E /* ChoiceViewController.swift */; };
-		C8FBFBEA2263D7100088840E /* OuftifViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FBFBE92263D70F0088840E /* OuftifViewController.swift */; };
+		C8FBFBEA2263D7100088840E /* OutfitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FBFBE92263D70F0088840E /* OutfitViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,7 +102,7 @@
 		B0E78FFF202504FD002DA8AF /* HelperExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperExtensions.swift; sourceTree = "<group>"; };
 		B0E79000202504FE002DA8AF /* RoundedWhiteButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedWhiteButton.swift; sourceTree = "<group>"; };
 		C8FBFBE72263D5D80088840E /* ChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceViewController.swift; sourceTree = "<group>"; };
-		C8FBFBE92263D70F0088840E /* OuftifViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OuftifViewController.swift; sourceTree = "<group>"; };
+		C8FBFBE92263D70F0088840E /* OutfitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutfitViewController.swift; sourceTree = "<group>"; };
 		F518532BBBD9EEF6AAD40CDD /* Pods-FirebaseApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebaseApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-FirebaseApp/Pods-FirebaseApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -198,7 +198,7 @@
 				04FDF835225B0C7500D71AD3 /* GalleryViewController.swift */,
 				04FDF837225B0CAE00D71AD3 /* OutfitMakerViewController.swift */,
 				C8FBFBE72263D5D80088840E /* ChoiceViewController.swift */,
-				C8FBFBE92263D70F0088840E /* OuftifViewController.swift */,
+				C8FBFBE92263D70F0088840E /* OutfitViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -412,7 +412,7 @@
 				B0E79004202504FE002DA8AF /* HelperExtensions.swift in Sources */,
 				B0E78FF92025025E002DA8AF /* HomeViewController.swift in Sources */,
 				04FDF83D225B0D3E00D71AD3 /* JSONFileHandler.swift in Sources */,
-				C8FBFBEA2263D7100088840E /* OuftifViewController.swift in Sources */,
+				C8FBFBEA2263D7100088840E /* OutfitViewController.swift in Sources */,
 				04FDF83E225B0D3E00D71AD3 /* ColorOptions.swift in Sources */,
 				C8FBFBE82263D5D80088840E /* ChoiceViewController.swift in Sources */,
 				B0E79003202504FE002DA8AF /* MenuViewController.swift in Sources */,
@@ -567,9 +567,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ZDHBW3K3CC;
+				DEVELOPMENT_TEAM = ASKQ246VYR;
 				INFOPLIST_FILE = FirebaseApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.akharag.espy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -585,9 +585,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ZDHBW3K3CC;
+				DEVELOPMENT_TEAM = ASKQ246VYR;
 				INFOPLIST_FILE = FirebaseApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.akharag.espy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
