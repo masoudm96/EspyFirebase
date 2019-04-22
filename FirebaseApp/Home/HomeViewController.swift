@@ -22,14 +22,19 @@ class HomeViewController:UIViewController, UIImagePickerControllerDelegate, UINa
         self.tabBarController?.tabBar.isHidden = true
         
         //loading annimation button
-        let activityIndicator = UIActivityIndicatorView(style: .gray)
-        view.addSubview(activityIndicator)
-        activityIndicator.frame = view.bounds
-        activityIndicator.startAnimating()
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.gray
+        loadingIndicator.startAnimating();
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
         
         loadImagesFromDataBase()
+        
+        // dismiss animation
+        dismiss(animated: false, completion: nil)
         //print("Number of Images Found in top: \(Outfit.top_images.count)")
-        activityIndicator.removeFromSuperview()
     }
     
     override func viewDidAppear(_ animated: Bool) {
