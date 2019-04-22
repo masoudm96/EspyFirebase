@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -454,7 +453,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AfX-Iy-M5f">
-                                <rect key="frame" x="83" y="212.66666666666666" width="248" height="46.999999999999972"/>
+                                <rect key="frame" x="83" y="212.66666666666666" width="248" height="48.999999999999972"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="30"/>
                                 <state key="normal" title="Upload Image">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -465,7 +464,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HAE-mw-wP0">
-                                <rect key="frame" x="141.66666666666666" y="299.66666666666669" width="130.99999999999997" height="137"/>
+                                <rect key="frame" x="131.66666666666666" y="301.66666666666669" width="150.99999999999997" height="133"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="30"/>
                                 <state key="normal" title="Wardrobe">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -476,7 +475,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QDb-KL-dZz">
-                                <rect key="frame" x="121" y="476.66666666666669" width="172" height="47.000000000000057"/>
+                                <rect key="frame" x="106.66666666666669" y="474.66666666666669" width="201" height="49.000000000000057"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="30"/>
                                 <state key="normal" title="Outfit Viewer">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -607,7 +606,7 @@
             </objects>
             <point key="canvasLocation" x="7411.594202898551" y="-483.42391304347831"/>
         </scene>
-        <!--Outfit View Controller-->
+        <!--View Outfits-->
         <scene sceneID="Em3-4l-QU7">
             <objects>
                 <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ev5-2A-rcw" customClass="OutfitViewController" customModule="FirebaseApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -620,25 +619,43 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wJq-DN-GCr">
-                                <rect key="frame" x="73" y="638" width="59" height="30"/>
+                                <rect key="frame" x="67" y="638" width="73" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Previous"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
+                                <state key="normal" title="Previous">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="previousButton:" destination="Ev5-2A-rcw" eventType="touchUpInside" id="Hux-U3-Kh8"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fh1-Us-4l1">
-                                <rect key="frame" x="289" y="638" width="32" height="30"/>
+                                <rect key="frame" x="286" y="638" width="40" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Next"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="nextButton:" destination="Ev5-2A-rcw" eventType="touchUpInside" id="d7T-f6-Fyu"/>
                                 </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bvK-28-YhG">
+                                <rect key="frame" x="349" y="26" width="45" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Delete"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="1g4-ku-khm"/>
                     </view>
+                    <navigationItem key="navigationItem" title="View Outfits" id="0nP-c4-DYy">
+                        <barButtonItem key="rightBarButtonItem" title="Delete" id="m9h-EG-Gns">
+                            <connections>
+                                <action selector="deleteOutfit:" destination="Ev5-2A-rcw" id="Qlu-Rp-leX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="imageViewer" destination="TQa-oO-kqE" id="16j-r4-9hJ"/>
                         <outlet property="nextButtonClicked" destination="fh1-Us-4l1" id="Wzt-Fd-c0j"/>
@@ -732,18 +749,17 @@
                                     <outletCollection property="gestureRecognizers" destination="r4J-Jl-bPY" appends="YES" id="5hV-ks-t9E"/>
                                 </connections>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="drT-na-zR5">
-                                <rect key="frame" x="354" y="442" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Save"/>
-                                <connections>
-                                    <action selector="saveOutfit:" destination="lMu-Gp-6vg" eventType="touchUpInside" id="aYW-BC-rP8"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="pDJ-U0-bBs"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Outfit Viewer" id="3oh-o7-GhS">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="c6c-7J-JTw">
+                            <connections>
+                                <action selector="saveOutfit:" destination="lMu-Gp-6vg" id="a7D-4a-XdZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="bottomImageView" destination="Z4N-bl-9gE" id="6aT-wt-z6J"/>
                         <outlet property="bottomView" destination="8re-6n-vbN" id="cPK-Xu-af0"/>
