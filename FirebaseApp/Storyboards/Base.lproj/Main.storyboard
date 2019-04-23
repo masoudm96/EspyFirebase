@@ -765,11 +765,21 @@
                         <viewLayoutGuide key="safeArea" id="pDJ-U0-bBs"/>
                     </view>
                     <navigationItem key="navigationItem" title="Outfit Viewer" id="3oh-o7-GhS">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="c6c-7J-JTw">
-                            <connections>
-                                <action selector="saveOutfit:" destination="lMu-Gp-6vg" id="a7D-4a-XdZ"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Save" id="c6c-7J-JTw">
+                                <connections>
+                                    <action selector="saveOutfit:" destination="lMu-Gp-6vg" id="a7D-4a-XdZ"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="icons8-dice-50" id="YOQ-6O-8h4">
+                                <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-7"/>
+                                <inset key="landscapeImageInsets" minX="0.0" minY="-1" maxX="0.0" maxY="0.0"/>
+                                <inset key="largeContentSizeImageInsets" minX="-1" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <connections>
+                                    <action selector="randomButtonPressed:" destination="lMu-Gp-6vg" id="LIK-nO-MtJ"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="bottomImageView" destination="Z4N-bl-9gE" id="6aT-wt-z6J"/>
@@ -982,6 +992,7 @@
     <resources>
         <image name="backArrow" width="33" height="33"/>
         <image name="espy_white_letter" width="626" height="626"/>
+        <image name="icons8-dice-50" width="50" height="50"/>
         <image name="userIcon" width="50" height="50"/>
     </resources>
 </document>

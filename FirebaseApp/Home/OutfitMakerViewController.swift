@@ -255,67 +255,6 @@ class OutfitMakerViewController:UIViewController{
             }
         }
     }
-    /*  @IBAction func panShoes(_ sender: UIPanGestureRecognizer) {
-        print("Pan Shoes")
-        let card = sender.view!
-        let point = sender.translation(in: view)
-        let xFromCenter = card.center.x - view.center.x
-        
-        card.center = CGPoint(x: origin.x + point.x , y: origin.y + padding)
-        card.transform = CGAffineTransform(rotationAngle: xFromCenter/divisor)
-        
-        if sender.state == .ended{
-            if card.center.x < 50{
-                UIView.animate(withDuration: 0.2,
-                               animations: {card.center = CGPoint(x: self.origin.x - 400, y: self.origin.y + self.padding + 200)
-                                card.alpha = 0
-                })
-                card.center = CGPoint(x: self.origin.x + 400, y: self.origin.y + self.padding)
-                card.transform = CGAffineTransform.identity
-                if( shoeIndex + 1 < Outfit.shoes_images.count){
-                    shoeIndex += 1
-                    shoesImageView.image = Outfit.shoes_images[shoeIndex]
-                }else{
-                    print("All images used")
-                    shoeIndex = 0
-                    shoesImageView.image = Outfit.shoes_images[0]
-                }
-                UIView.animate(withDuration: 0.2,
-                               animations: {
-                                card.center = CGPoint(x: self.origin.x, y: self.origin.y + self.padding)
-                                card.alpha = 1
-                
-                })
-            }else if card.center.x > (view.frame.width - 50){
-                UIView.animate(withDuration: 0.2,
-                               animations: {card.center = CGPoint(x: self.origin.x + 400, y: self.origin.y + self.padding + 200)
-                                card.alpha = 0
-                })
-                card.center = CGPoint(x: self.origin.x + 400, y: self.origin.y + padding)
-                card.transform = CGAffineTransform.identity
-                //load next picture
-                //check if out of bounds
-                if(shoeIndex + 1 < Outfit.shoes_images.count){
-                    shoeIndex += 1
-                    shoesImageView.image = Outfit.shoes_images[shoeIndex]
-                }else{
-                    print("All Images used")
-                    shoeIndex = 0
-                    shoesImageView.image = Outfit.shoes_images[0]
-                }
-                UIView.animate(withDuration: 0.2,
-                               animations: {
-                                card.center = CGPoint(x: self.origin.x, y: self.origin.y + self.padding)
-                                card.alpha = 1
-                })
-            } else{
-                UIView.animate(withDuration: 0.2, animations: {card.center = CGPoint(x: self.origin.x, y: self.origin.y + self.padding)
-                    card.transform = CGAffineTransform.identity
-                    
-                })
-            }
-        }
-    }*/
     
     @IBAction func saveOutfit(_ sender: Any) {
         let topImage = Outfit.top_images[topIndex]
@@ -359,5 +298,14 @@ class OutfitMakerViewController:UIViewController{
             self.navigationController?.popViewController(animated: true)
             self.dismiss(animated: true, completion: nil)
         })
+    }
+    @IBAction func randomButtonPressed(_ sender: Any) {
+        topIndex = Int.random(in: 0 ..< Outfit.top_images.count)
+        bottomIndex = Int.random(in: 0 ..< Outfit.bottom_images.count)
+        shoeIndex = Int.random(in: 0 ..< Outfit.shoes_images.count)
+        
+        topImageView.image = Outfit.top_images[topIndex]
+        bottomImageView.image = Outfit.bottom_images[bottomIndex]
+        shoesImageView.image = Outfit.shoes_images[shoeIndex]
     }
 }
