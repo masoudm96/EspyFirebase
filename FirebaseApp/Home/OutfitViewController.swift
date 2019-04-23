@@ -122,8 +122,65 @@ class OutfitViewController: UIViewController {
             
             Database.database().reference().child("user_data").child(Auth.auth().currentUser!.uid).updateChildValues(data)
         }
+        else{
+            print("option2 used")
+            var deleteCounter = Int(outfitIndex)
+            var switch1 = true
+            
+            while(deleteCounter < Outfit.outfitCounter - 1)
+            {
+                let ref1 = Storage.storage().reference().child("\(user_email)").child("/outfits").child("\(Int(deleteCounter+1)).jpg")
+                let ref2 = Storage.storage().reference().child("\(user_email)").child("/outfits").child("\(Int(deleteCounter+2)).jpg")
+                
+                // Download in memory with a maximum allowed size of 4mb
+                ref2.getData(maxSize: 1 * 4096 * 4096) { data, error in
+                    if let error = error {
+                        // Uh-oh, an error occurred!
+                        print(error)
+                    } else {
+                        // Data for "images/island.jpg" is returned
+                        let image = UIImage(data: data!)
+                        let imageData = image?.jpegData(compressionQuality: 0.2)
+                        ref1.putData(imageData!, metadata: nil, completion: {(metadata, Error) in
+                            print(metadata as Any)
+                        })
+                        
+                        if(switch1 == true && deleteCounter+2 != Outfit.outfit_images.count - 1)
+                        {
+                            Outfit.outfit_images.remove(at: deleteCounter)
+                            Outfit.outfitCounter = Outfit.outfitCounter - 1
+                            
+                            let data = [
+                                
+                                "topCount" : Outfit.topCounter,
+                                "bottomCount" : Outfit.bottomCounter,
+                                "shoesCount" : Outfit.shoesCounter,
+                                "outfitCount" : Outfit.outfitCounter
+                            ]
+                            Database.database().reference().child("user_data").child(Auth.auth().currentUser!.uid).updateChildValues(data)
+                            
+                            switch1 = false
+                        }
+                        
+                        // Delete the file
+                        ref2.delete { error in
+                            if let error = error {
+                                // Uh-oh, an error occurred!
+                                print(error)
+                            } else {
+                                // File deleted successfully
+                            }
+                        }
+                        //self.outfitIndex = 0
+                    }
+                }
+                deleteCounter = deleteCounter + 1
+            }
+            
+            
+        }
         
-
+        
         
         if(Outfit.outfit_images.count > 0)
         {
@@ -136,5 +193,4 @@ class OutfitViewController: UIViewController {
         }
         
     }
-    
 }
