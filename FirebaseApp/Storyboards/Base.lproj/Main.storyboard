@@ -683,9 +683,6 @@
                                         <rect key="frame" x="26" y="37" width="141" height="141"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <gestureRecognizers/>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="Dut-cC-bsx" appends="YES" id="jyG-Hk-RN2"/>
-                                        </connections>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Top" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rsd-U6-iGl">
                                         <rect key="frame" x="83" y="8" width="29" height="21"/>
@@ -697,7 +694,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="Dut-cC-bsx" appends="YES" id="NeY-Kr-p42"/>
+                                    <outletCollection property="gestureRecognizers" destination="H7E-ay-65Y" appends="YES" id="T6a-5g-Nx4"/>
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8re-6n-vbN" userLabel="Bottom View">
@@ -708,9 +705,6 @@
                                         <rect key="frame" x="26" y="37" width="141" height="141"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <gestureRecognizers/>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="hY7-Vk-qOy" appends="YES" id="7T7-Hy-6Ra"/>
-                                        </connections>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bottom" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IkE-MZ-IzP">
                                         <rect key="frame" x="68" y="8" width="56" height="21"/>
@@ -722,7 +716,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="hY7-Vk-qOy" appends="YES" id="Bz1-Tl-9t0"/>
+                                    <outletCollection property="gestureRecognizers" destination="6Dr-st-dDb" appends="YES" id="9on-Ep-pPg"/>
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KpY-Z5-qd7" userLabel="Shoes View">
@@ -733,9 +727,6 @@
                                         <rect key="frame" x="26" y="37" width="141" height="141"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <gestureRecognizers/>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="r4J-Jl-bPY" appends="YES" id="fxo-G2-O36"/>
-                                        </connections>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Shoes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfp-OF-eYl">
                                         <rect key="frame" x="73" y="8" width="48" height="21"/>
@@ -747,9 +738,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="r4J-Jl-bPY" appends="YES" id="5hV-ks-t9E"/>
-                                    <outletCollection property="gestureRecognizers" destination="r4J-Jl-bPY" appends="YES" id="wk5-hS-GJy"/>
-                                    <outletCollection property="gestureRecognizers" destination="r4J-Jl-bPY" appends="YES" id="YFW-DO-NGX"/>
+                                    <outletCollection property="gestureRecognizers" destination="7dD-du-eME" appends="YES" id="W1f-28-mZZ"/>
                                 </connections>
                             </view>
                         </subviews>
@@ -773,22 +762,22 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DiS-qR-1G8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="Dut-cC-bsx">
+                <panGestureRecognizer minimumNumberOfTouches="1" id="H7E-ay-65Y">
                     <connections>
-                        <action selector="panTop:" destination="lMu-Gp-6vg" id="cNE-BT-3cF"/>
-                        <outlet property="delegate" destination="T62-ra-xV9" id="Y89-68-OEq"/>
+                        <action selector="panTop:" destination="lMu-Gp-6vg" id="zYN-gB-6Tw"/>
+                        <outlet property="delegate" destination="T62-ra-xV9" id="bwr-pT-3dE"/>
                     </connections>
                 </panGestureRecognizer>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="hY7-Vk-qOy">
+                <panGestureRecognizer minimumNumberOfTouches="1" id="6Dr-st-dDb">
                     <connections>
-                        <action selector="panBottom:" destination="lMu-Gp-6vg" id="iUE-H0-GRj"/>
-                        <outlet property="delegate" destination="8re-6n-vbN" id="Nvr-lO-PEQ"/>
+                        <action selector="panBottom:" destination="lMu-Gp-6vg" id="kLk-St-YPv"/>
+                        <outlet property="delegate" destination="8re-6n-vbN" id="yxl-xB-JLj"/>
                     </connections>
                 </panGestureRecognizer>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="r4J-Jl-bPY">
+                <panGestureRecognizer minimumNumberOfTouches="1" id="7dD-du-eME">
                     <connections>
-                        <action selector="panShoes:" destination="lMu-Gp-6vg" id="piu-QU-D0n"/>
-                        <outlet property="delegate" destination="KpY-Z5-qd7" id="fUU-19-BvJ"/>
+                        <action selector="panShoes:" destination="lMu-Gp-6vg" id="NBl-6H-PFk"/>
+                        <outlet property="delegate" destination="KpY-Z5-qd7" id="1Ku-ZP-H2a"/>
                     </connections>
                 </panGestureRecognizer>
             </objects>
