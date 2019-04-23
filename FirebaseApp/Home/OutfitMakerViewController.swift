@@ -143,7 +143,7 @@ class OutfitMakerViewController:UIViewController{
                                animations: {card.center = CGPoint(x: self.origin.x - 400, y: self.origin.y - 35)
                                 card.alpha = 0
                 })
-                card.center = CGPoint(x: self.origin.x + 400, y: self.origin.y - self.padding)
+                card.center = CGPoint(x: self.origin.x + 400, y: self.origin.y)
                 card.transform = CGAffineTransform.identity
                 //load next picture
                 //check if out of bounds
@@ -166,7 +166,7 @@ class OutfitMakerViewController:UIViewController{
                                animations: {card.center = CGPoint(x: self.origin.x + 400, y: self.origin.y - 35 )
                                 card.alpha = 0
                 })
-                card.center = CGPoint(x: origin.x, y: origin.y)
+                card.center = CGPoint(x: self.origin.x, y: self.origin.y)
                 card.transform = CGAffineTransform.identity
                 //load next picture
                 //check if out of bounds
@@ -194,6 +194,7 @@ class OutfitMakerViewController:UIViewController{
     }
     
     @IBAction func panShoes(_ sender: UIPanGestureRecognizer) {
+        print("Pan Shoes")
         let card = sender.view!
         let point = sender.translation(in: view)
         let xFromCenter = card.center.x - view.center.x
@@ -204,18 +205,18 @@ class OutfitMakerViewController:UIViewController{
         if sender.state == .ended{
             if card.center.x < 50{
                 UIView.animate(withDuration: 0.2,
-                               animations: {card.center = CGPoint(x: self.view.center.x-400, y: self.view.center.y + 295)
+                               animations: {card.center = CGPoint(x: self.origin.x - 400, y: self.origin.y + self.padding + 200)
                                 card.alpha = 0
                 })
-                card.center = CGPoint(x: self.origin.x - 400, y: self.origin.y - self.padding)
+                card.center = CGPoint(x: self.origin.x + 400, y: self.origin.y + self.padding)
                 card.transform = CGAffineTransform.identity
                 if( shoeIndex + 1 < Outfit.shoes_images.count){
-                    shoeIndex = 0
+                    shoeIndex += 1
                     shoesImageView.image = Outfit.shoes_images[shoeIndex]
                 }else{
                     print("All images used")
-                    bottomIndex = 0
-                    bottomImageView.image = Outfit.bottom_images[0]
+                    shoeIndex = 0
+                    shoesImageView.image = Outfit.shoes_images[0]
                 }
                 UIView.animate(withDuration: 0.2,
                                animations: {

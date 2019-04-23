@@ -15,6 +15,7 @@ class UploadViewController:UIViewController{
     @IBOutlet weak var shoesTagButton: UIButton!
     @IBOutlet weak var bottomTagButton: UIButton!
     @IBOutlet weak var topTagButton: UIButton!
+    @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var ImageView: UIImageView!
     var previewImage : UIImage?
     var data = Data()
@@ -59,6 +60,8 @@ class UploadViewController:UIViewController{
     
     
     @IBAction func savePressed(_ sender: Any) {
+        saveButton.isUserInteractionEnabled = false
+        saveButton.setTitle("Saving", for: .normal)
         if Outfit.key_tag != ""{
             let image = ImageView.image
             
@@ -228,5 +231,7 @@ class UploadViewController:UIViewController{
                     
                 }}))
         }
+        saveButton.setTitle("Save", for: .normal)
+        saveButton.isUserInteractionEnabled = true
     }
 }

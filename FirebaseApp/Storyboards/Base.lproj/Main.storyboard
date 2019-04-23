@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2cF-Wv-Sll">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2cF-Wv-Sll">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -747,6 +748,8 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="r4J-Jl-bPY" appends="YES" id="5hV-ks-t9E"/>
+                                    <outletCollection property="gestureRecognizers" destination="r4J-Jl-bPY" appends="YES" id="wk5-hS-GJy"/>
+                                    <outletCollection property="gestureRecognizers" destination="r4J-Jl-bPY" appends="YES" id="YFW-DO-NGX"/>
                                 </connections>
                             </view>
                         </subviews>
@@ -785,7 +788,7 @@
                 <panGestureRecognizer minimumNumberOfTouches="1" id="r4J-Jl-bPY">
                     <connections>
                         <action selector="panShoes:" destination="lMu-Gp-6vg" id="piu-QU-D0n"/>
-                        <outlet property="delegate" destination="KpY-Z5-qd7" id="L7n-qG-q68"/>
+                        <outlet property="delegate" destination="KpY-Z5-qd7" id="fUU-19-BvJ"/>
                     </connections>
                 </panGestureRecognizer>
             </objects>
@@ -836,33 +839,40 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CtF-gD-OkH">
-                                <rect key="frame" x="7" y="82" width="400" height="400"/>
+                                <rect key="frame" x="7" y="71" width="400" height="400"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="CtF-gD-OkH" secondAttribute="height" multiplier="293:230" constant="-109.56521739130432" id="Q0r-s9-4Yf"/>
+                                    <constraint firstAttribute="width" secondItem="CtF-gD-OkH" secondAttribute="height" multiplier="1:1" id="VlQ-UO-EgF"/>
                                     <constraint firstAttribute="width" secondItem="CtF-gD-OkH" secondAttribute="height" multiplier="414:325" constant="-109.53846153846155" id="caE-aH-CoV"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="JW5-oC-16c" firstAttribute="top" secondItem="CtF-gD-OkH" secondAttribute="bottom" constant="29" id="3Vv-BK-zFV"/>
+                            <constraint firstItem="NAt-x4-bKu" firstAttribute="trailing" secondItem="CtF-gD-OkH" secondAttribute="trailing" constant="7" id="9Nf-Jj-Vwa"/>
                             <constraint firstItem="NAt-x4-bKu" firstAttribute="trailing" secondItem="jT0-bp-Vzk" secondAttribute="trailing" constant="88" id="DIi-4L-pEE"/>
                             <constraint firstItem="CtF-gD-OkH" firstAttribute="centerX" secondItem="iKv-nb-qba" secondAttribute="centerX" id="Qvu-Vw-pEz"/>
+                            <constraint firstItem="iKv-nb-qba" firstAttribute="top" secondItem="NEG-yf-iY1" secondAttribute="bottom" constant="125" id="Sp7-f1-mpp"/>
                             <constraint firstItem="NAt-x4-bKu" firstAttribute="bottom" secondItem="iKv-nb-qba" secondAttribute="bottom" constant="2" id="SrF-ud-Gqy"/>
                             <constraint firstItem="JW5-oC-16c" firstAttribute="leading" secondItem="NAt-x4-bKu" secondAttribute="leading" constant="96" id="X2w-iB-yNV"/>
                             <constraint firstItem="NEG-yf-iY1" firstAttribute="centerY" secondItem="eDb-km-j3S" secondAttribute="centerY" constant="147" id="XfD-CQ-LyQ"/>
-                            <constraint firstItem="CtF-gD-OkH" firstAttribute="top" secondItem="NAt-x4-bKu" secondAttribute="top" constant="18" id="Y16-pq-77y"/>
                             <constraint firstItem="jT0-bp-Vzk" firstAttribute="baseline" secondItem="NEG-yf-iY1" secondAttribute="baseline" id="aBb-7e-42N"/>
                             <constraint firstItem="CtF-gD-OkH" firstAttribute="centerX" secondItem="NEG-yf-iY1" secondAttribute="centerX" id="cY4-N8-FC4"/>
                             <constraint firstItem="NEG-yf-iY1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="JW5-oC-16c" secondAttribute="trailing" constant="8" symbolic="YES" id="ckv-S2-G2j"/>
+                            <constraint firstItem="NEG-yf-iY1" firstAttribute="top" secondItem="CtF-gD-OkH" secondAttribute="bottom" constant="29" id="eOO-yr-3sQ"/>
+                            <constraint firstItem="CtF-gD-OkH" firstAttribute="leading" secondItem="NAt-x4-bKu" secondAttribute="leading" constant="7" id="eeG-TE-OgF"/>
                             <constraint firstItem="jT0-bp-Vzk" firstAttribute="leading" secondItem="NEG-yf-iY1" secondAttribute="trailing" constant="50" id="g2g-Vh-80k"/>
                             <constraint firstItem="NEG-yf-iY1" firstAttribute="centerX" secondItem="eDb-km-j3S" secondAttribute="centerX" id="mcU-pm-L2m"/>
                             <constraint firstItem="jT0-bp-Vzk" firstAttribute="baseline" secondItem="JW5-oC-16c" secondAttribute="baseline" id="qJd-b7-nm7"/>
+                            <constraint firstItem="jT0-bp-Vzk" firstAttribute="top" secondItem="CtF-gD-OkH" secondAttribute="bottom" constant="29" id="u4u-Go-UFt"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NAt-x4-bKu"/>
                     </view>
                     <connections>
                         <outlet property="ImageView" destination="CtF-gD-OkH" id="hX3-ez-rBu"/>
                         <outlet property="bottomTagButton" destination="NEG-yf-iY1" id="Lob-6G-qRv"/>
+                        <outlet property="saveButton" destination="iKv-nb-qba" id="mlR-NC-Xzv"/>
                         <outlet property="shoesTagButton" destination="jT0-bp-Vzk" id="dwi-j2-yPc"/>
                         <outlet property="topTagButton" destination="JW5-oC-16c" id="cLL-qk-rrS"/>
                     </connections>
@@ -962,7 +972,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="backArrow" width="33.333332061767578" height="33.333332061767578"/>
+        <image name="backArrow" width="33" height="33"/>
         <image name="espy_white_letter" width="626" height="626"/>
         <image name="userIcon" width="50" height="50"/>
     </resources>
