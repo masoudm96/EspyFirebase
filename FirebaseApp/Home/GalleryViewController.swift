@@ -13,17 +13,44 @@ import FirebaseUI
 
 class GalleryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
     
+    var allImages : NSMutableArray!
+    
+    var sections = ["Top", "Bottom", "Shoe"]
+    
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        var reuseable : UICollectionReusableView? = nil
+        if(kind == UICollectionView.elementKindSectionHeader){
+            let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "ReuseableView", for: indexPath) as! ReuseableCollectionReusableView
+            
+            view.sectionHeader.text = sections[indexPath.section]
+            
+            reuseable = view
+        }
+        return reuseable!
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return sections.count
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Outfit.top_images.count
+        return (allImages.object(at: section) as! NSArray).count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CollectionViewCell
         
-        cell.clothingImageView.image = Outfit.top_images[indexPath.item]
+        if(indexPath.section == 0){
+            cell.clothingImageView.image = Outfit.top_images[indexPath.row]
+        }
+        else if (indexPath.section == 1){
+            cell.clothingImageView.image = Outfit.bottom_images[indexPath.row]
+        }else{
+            cell.clothingImageView.image = Outfit.shoes_images[indexPath.row]
+        }
         cell.layer.borderColor = UIColor.lightGray.cgColor
         cell.layer.borderWidth = 0.5
         
@@ -36,9 +63,7 @@ class GalleryViewController: UIViewController, UICollectionViewDelegate, UIColle
         view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
         self.tabBarController?.tabBar.isHidden = true
        
-        //if Outfit.top_images.count > 0{
-          //  imageView.image = Outfit.top_images.last
-        //}
+        allImages = NSMutableArray(array: [Outfit.top_images, Outfit.bottom_images, Outfit.shoes_images])
         
         let layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.sectionInset = UIEdgeInsets (top: 0, left: 5, bottom: 0, right: 5)

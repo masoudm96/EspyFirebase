@@ -52,6 +52,7 @@
 		B0E79005202504FE002DA8AF /* RoundedWhiteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E79000202504FE002DA8AF /* RoundedWhiteButton.swift */; };
 		C8FBFBE82263D5D80088840E /* ChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FBFBE72263D5D80088840E /* ChoiceViewController.swift */; };
 		C8FBFBEA2263D7100088840E /* OutfitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FBFBE92263D70F0088840E /* OutfitViewController.swift */; };
+		CD21E3BE226EC54A0011FF95 /* ReuseableCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD21E3BD226EC54A0011FF95 /* ReuseableCollectionReusableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,6 +104,7 @@
 		B0E79000202504FE002DA8AF /* RoundedWhiteButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedWhiteButton.swift; sourceTree = "<group>"; };
 		C8FBFBE72263D5D80088840E /* ChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceViewController.swift; sourceTree = "<group>"; };
 		C8FBFBE92263D70F0088840E /* OutfitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutfitViewController.swift; sourceTree = "<group>"; };
+		CD21E3BD226EC54A0011FF95 /* ReuseableCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseableCollectionReusableView.swift; sourceTree = "<group>"; };
 		F518532BBBD9EEF6AAD40CDD /* Pods-FirebaseApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebaseApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-FirebaseApp/Pods-FirebaseApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -173,6 +175,7 @@
 		B08C14EF203163AC0061819B /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				CD21E3BD226EC54A0011FF95 /* ReuseableCollectionReusableView.swift */,
 				B08C14EB202E70080061819B /* UserService.swift */,
 				B0330FFD2031700E00FE2203 /* ImageService.swift */,
 			);
@@ -415,6 +418,7 @@
 				C8FBFBEA2263D7100088840E /* OutfitViewController.swift in Sources */,
 				04FDF83E225B0D3E00D71AD3 /* ColorOptions.swift in Sources */,
 				C8FBFBE82263D5D80088840E /* ChoiceViewController.swift in Sources */,
+				CD21E3BE226EC54A0011FF95 /* ReuseableCollectionReusableView.swift in Sources */,
 				B0E79003202504FE002DA8AF /* MenuViewController.swift in Sources */,
 				B0E78FD92024FDEF002DA8AF /* AppDelegate.swift in Sources */,
 				04519848225FDDC400A0E7BE /* global.swift in Sources */,
