@@ -166,6 +166,7 @@
 		B08C14E6202CE5E20061819B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				04B50FF82265B5B8006D7623 /* CollectionViewCell.swift */,
 				B08C14E7202CE5EF0061819B /* Post.swift */,
 				B08C14ED202E703C0061819B /* UserProfile.swift */,
 			);
@@ -210,7 +211,6 @@
 			isa = PBXGroup;
 			children = (
 				B0E78FDC2024FDEF002DA8AF /* Main.storyboard */,
-				04B50FF82265B5B8006D7623 /* CollectionViewCell.swift */,
 				B0E78FE12024FDEF002DA8AF /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;

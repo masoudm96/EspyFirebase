@@ -65,10 +65,10 @@ class GalleryViewController: UIViewController, UICollectionViewDelegate, UIColle
        
         allImages = NSMutableArray(array: [Outfit.top_images, Outfit.bottom_images, Outfit.shoes_images])
         
-        let layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.sectionInset = UIEdgeInsets (top: 0, left: 5, bottom: 0, right: 5)
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        //layout.sectionInset = UIEdgeInsets (top: 5, left: 5, bottom: 5, right: 5)
         layout.minimumInteritemSpacing = 5
-        layout.itemSize = CGSize(width: (self.collectionView.frame.size.width - 20)/3, height: self.collectionView.frame.size.height/3)
+        layout.itemSize = CGSize(width: (collectionView.frame.size.width )/3, height: (collectionView.frame.size.width )/3)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
