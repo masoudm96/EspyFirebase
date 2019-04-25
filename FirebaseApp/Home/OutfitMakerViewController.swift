@@ -38,7 +38,8 @@ class OutfitMakerViewController:UIViewController{
         
         headerSize = UIScreen.main.bounds.size.height * 0.035
         origin = CGPoint(x: UIScreen.main.bounds.size.width*0.5, y: UIScreen.main.bounds.size.height*0.5 + headerSize)
-        padding = (UIScreen.main.bounds.size.height * 0.01) + bottomView.frame.size.height
+        padding = (self.navigationController!.navigationBar.frame.height * 0.01) + bottomView.frame.size.height
+        //padding = (UIScreen.main.bounds.size.height * 0.01) + bottomView.frame.size.height
         
         bottomView.center = CGPoint(x: origin.x, y: origin.y)
         topView.center = CGPoint(x: origin.x, y: origin.y - padding)
@@ -64,7 +65,6 @@ class OutfitMakerViewController:UIViewController{
     }
     
     @IBAction func panTop(_ sender: UIPanGestureRecognizer) {
-        print("Pan Top")
         let card = sender.view!
         let point = sender.translation(in: view)
         let xFromCenter = card.center.x - view.center.x
@@ -131,7 +131,6 @@ class OutfitMakerViewController:UIViewController{
     }
     
     @IBAction func panBottom(_ sender: UIPanGestureRecognizer) {
-        print("Pan Bottom")
         let card = sender.view!
         let point = sender.translation(in: view)
         let xFromCenter = card.center.x - view.center.x
@@ -153,7 +152,6 @@ class OutfitMakerViewController:UIViewController{
                     bottomIndex += 1
                     bottomImageView.image = Outfit.bottom_images[bottomIndex]
                 }else{
-                    print("All Images used")
                     bottomIndex = 0
                     bottomImageView.image = Outfit.bottom_images[0]
                 }
@@ -176,7 +174,6 @@ class OutfitMakerViewController:UIViewController{
                     bottomIndex += 1
                     bottomImageView.image = Outfit.bottom_images[bottomIndex]
                 }else{
-                    print("All Images used")
                     bottomIndex = 0
                     bottomImageView.image = Outfit.bottom_images[0]
                 }
@@ -195,7 +192,6 @@ class OutfitMakerViewController:UIViewController{
         }
     }
     @IBAction func panShoes(_ sender: UIPanGestureRecognizer) {
-        print("Pan Shoes")
         let card = sender.view!
         let point = sender.translation(in: view)
         let xFromCenter = card.center.x - view.center.x
@@ -215,7 +211,6 @@ class OutfitMakerViewController:UIViewController{
                     shoeIndex += 1
                     shoesImageView.image = Outfit.shoes_images[shoeIndex]
                 }else{
-                    print("All images used")
                     shoeIndex = 0
                     shoesImageView.image = Outfit.shoes_images[0]
                 }
@@ -238,7 +233,6 @@ class OutfitMakerViewController:UIViewController{
                     shoeIndex += 1
                     shoesImageView.image = Outfit.shoes_images[shoeIndex]
                 }else{
-                    print("All Images used")
                     shoeIndex = 0
                     shoesImageView.image = Outfit.shoes_images[0]
                 }

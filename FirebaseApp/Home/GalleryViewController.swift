@@ -11,8 +11,7 @@ import Firebase
 import UIKit
 import FirebaseUI
 
-class GalleryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
-    
+class GalleryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     var allImages : NSMutableArray!
     
     var sections = ["Top", "Bottom", "Shoe"]
@@ -42,6 +41,9 @@ class GalleryViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CollectionViewCell
+        let cellSize = cell.frame.size.width
+    
+        cell.clothingImageView.frame = CGRect(x: cellSize * 0.05, y: cellSize * 0.05, width: cellSize * 0.9, height: cellSize * 0.9)
         
         if(indexPath.section == 0){
             cell.clothingImageView.image = Outfit.top_images[indexPath.row]
@@ -51,8 +53,10 @@ class GalleryViewController: UIViewController, UICollectionViewDelegate, UIColle
         }else{
             cell.clothingImageView.image = Outfit.shoes_images[indexPath.row]
         }
+        cell.layer.backgroundColor = UIColor.white.cgColor
+        cell.layer.cornerRadius = 5
         cell.layer.borderColor = UIColor.lightGray.cgColor
-        cell.layer.borderWidth = 0.5
+        cell.layer.borderWidth = 1
         
         return cell
     }
@@ -61,26 +65,31 @@ class GalleryViewController: UIViewController, UICollectionViewDelegate, UIColle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
+        collectionView.backgroundColor = UIColor.clear
         self.tabBarController?.tabBar.isHidden = true
-       
+        
         allImages = NSMutableArray(array: [Outfit.top_images, Outfit.bottom_images, Outfit.shoes_images])
         
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        //layout.sectionInset = UIEdgeInsets (top: 5, left: 5, bottom: 5, right: 5)
-        layout.minimumInteritemSpacing = 5
-        layout.itemSize = CGSize(width: (collectionView.frame.size.width )/3, height: (collectionView.frame.size.width )/3)
+        layout.sectionInset = UIEdgeInsets (top: 0, left: 5, bottom: 0, right: 5)
+        layout.minimumInteritemSpacing = 2
+        layout.itemSize = CGSize(width: (collectionView.frame.size.width - 100)/3, height: (collectionView.frame.size.width - 100)/3)
+
+        //layout.minimumInteritemSpacing = 0
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
-        cell?.layer.borderColor = UIColor.gray.cgColor
-        cell?.layer.borderWidth = 2
+        cell?.layer.borderColor = UIColor.blue.cgColor
+        cell?.layer.borderWidth = 5
     }
     
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
+        
         cell?.layer.borderColor = UIColor.lightGray.cgColor
-        cell?.layer.borderWidth = 0.5
+        cell?.layer.borderWidth = 1
     }
 }
+
