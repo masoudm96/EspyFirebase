@@ -11,7 +11,7 @@ import Firebase
 
 class OutfitViewController: UIViewController {
     
-    var outfitIndex = 0
+    var outfitIndex: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,75 +121,73 @@ class OutfitViewController: UIViewController {
             ]
             
             Database.database().reference().child("user_data").child(Auth.auth().currentUser!.uid).updateChildValues(data)
+            self.navigationController?.popViewController(animated: true)
+            self.dismiss(animated: true, completion: nil)
         }
-        else{
+        else
+        {
             print("option2 used")
-            var deleteCounter = Int(outfitIndex)
-            var switch1 = true
+            let delete: Int = outfitIndex
             
-            while(deleteCounter < Outfit.outfitCounter - 1)
+            while(outfitIndex < Outfit.outfitCounter - 1)
             {
-                let ref1 = Storage.storage().reference().child("\(user_email)").child("/outfits").child("\(Int(deleteCounter+1)).jpg")
-                let ref2 = Storage.storage().reference().child("\(user_email)").child("/outfits").child("\(Int(deleteCounter+2)).jpg")
+                let ref1 = storageRef.child("\(outfitIndex+1).jpg")
+                let ref2 = storageRef.child("\(outfitIndex+2).jpg")
                 
                 // Download in memory with a maximum allowed size of 4mb
                 ref2.getData(maxSize: 1 * 4096 * 4096) { data, error in
-                    if let error = error {
+                    if let error = error
+                    {
                         // Uh-oh, an error occurred!
                         print(error)
-                    } else {
+                    }
+                    else
+                    {
                         // Data for "images/island.jpg" is returned
                         let image = UIImage(data: data!)
                         let imageData = image?.jpegData(compressionQuality: 0.2)
                         ref1.putData(imageData!, metadata: nil, completion: {(metadata, Error) in
                             print(metadata as Any)
                         })
-                        
-                        if(switch1 == true && deleteCounter+2 != Outfit.outfit_images.count - 1)
-                        {
-                            Outfit.outfit_images.remove(at: deleteCounter)
-                            Outfit.outfitCounter = Outfit.outfitCounter - 1
-                            
-                            let data = [
-                                
-                                "topCount" : Outfit.topCounter,
-                                "bottomCount" : Outfit.bottomCounter,
-                                "shoesCount" : Outfit.shoesCounter,
-                                "outfitCount" : Outfit.outfitCounter
-                            ]
-                            Database.database().reference().child("user_data").child(Auth.auth().currentUser!.uid).updateChildValues(data)
-                            
-                            switch1 = false
-                        }
-                        
-                        // Delete the file
-                        ref2.delete { error in
-                            if let error = error {
-                                // Uh-oh, an error occurred!
-                                print(error)
-                            } else {
-                                // File deleted successfully
-                            }
-                        }
-                        //self.outfitIndex = 0
                     }
                 }
-                deleteCounter = deleteCounter + 1
+                
+                if(delete == outfitIndex)
+                {
+                    Outfit.outfit_images.remove(at: outfitIndex)
+                }
+                
+                outfitIndex += 1
+                print("end step reached")
             }
             
+            let ref3 = storageRef.child("\(outfitIndex+1).jpg")
+            print("\(outfitIndex) +  is being referenced for ref3")
+            // Delete the file
+            ref3.delete { error in
+                if let error = error {
+                    // Uh-oh, an error occurred!
+                    print(error)
+                } else {
+                    // File deleted successfully
+                    print("successful deletion")
+                }
+            }
             
-        }
-        
-        
-        
-        if(Outfit.outfit_images.count > 0)
-        {
-            imageViewer.image = Outfit.outfit_images[0]
-        }
-        else
-        {
+            Outfit.outfitCounter = Outfit.outfitCounter - 1
+            
+            let data = [
+                
+                "topCount" : Outfit.topCounter,
+                "bottomCount" : Outfit.bottomCounter,
+                "shoesCount" : Outfit.shoesCounter,
+                "outfitCount" : Outfit.outfitCounter
+            ]
+            Database.database().reference().child("user_data").child(Auth.auth().currentUser!.uid).updateChildValues(data)
+            
             self.navigationController?.popViewController(animated: true)
             self.dismiss(animated: true, completion: nil)
+ 
         }
         
     }
