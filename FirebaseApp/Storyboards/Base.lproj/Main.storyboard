@@ -548,6 +548,10 @@
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="z2A-ka-bxW"/>
                     </view>
+                    <connections>
+                        <outlet property="galleryButton" destination="sUi-wI-tHN" id="ngi-bX-bMP"/>
+                        <outlet property="outfitButton" destination="Wzc-EE-9wH" id="Jki-aZ-hju"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zvp-Te-6zr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -866,8 +870,8 @@
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="NEG-yf-iY1" firstAttribute="top" secondItem="CtF-gD-OkH" secondAttribute="bottom" constant="69" id="06P-4U-gYj"/>
                             <constraint firstItem="NAt-x4-bKu" firstAttribute="trailing" secondItem="CtF-gD-OkH" secondAttribute="trailing" constant="7" id="0pE-Wb-e0k"/>
+                            <constraint firstItem="iKv-nb-qba" firstAttribute="top" secondItem="NEG-yf-iY1" secondAttribute="bottom" constant="85" id="2dq-lu-Ssc"/>
                             <constraint firstItem="NAt-x4-bKu" firstAttribute="bottom" secondItem="iKv-nb-qba" secondAttribute="bottom" constant="2" id="4c8-6j-OUN"/>
                             <constraint firstItem="JW5-oC-16c" firstAttribute="top" secondItem="CtF-gD-OkH" secondAttribute="bottom" constant="69" id="Ccf-CN-SJI"/>
                             <constraint firstItem="CtF-gD-OkH" firstAttribute="leading" secondItem="NAt-x4-bKu" secondAttribute="leading" constant="7" id="J4I-9e-uN8"/>
