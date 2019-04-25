@@ -65,7 +65,6 @@ class GalleryViewController: UIViewController, UICollectionViewDelegate, UIColle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
-        collectionView.backgroundColor = UIColor.clear
         self.tabBarController?.tabBar.isHidden = true
         
         allImages = NSMutableArray(array: [Outfit.top_images, Outfit.bottom_images, Outfit.shoes_images])
@@ -73,7 +72,7 @@ class GalleryViewController: UIViewController, UICollectionViewDelegate, UIColle
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.sectionInset = UIEdgeInsets (top: 0, left: 5, bottom: 0, right: 5)
         layout.minimumInteritemSpacing = 2
-        layout.itemSize = CGSize(width: (collectionView.frame.size.width - 100)/3, height: (collectionView.frame.size.width - 100)/3)
+        layout.itemSize = CGSize(width: (collectionView.frame.size.width - 200)/2, height: (collectionView.frame.size.width - 200)/2)
 
         //layout.minimumInteritemSpacing = 0
     }
