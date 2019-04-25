@@ -71,8 +71,8 @@ class GalleryViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.sectionInset = UIEdgeInsets (top: 0, left: 5, bottom: 0, right: 5)
-        layout.minimumInteritemSpacing = 2
-        layout.itemSize = CGSize(width: (collectionView.frame.size.width - 200)/2, height: (collectionView.frame.size.width - 200)/2)
+        layout.minimumInteritemSpacing = 5
+        layout.itemSize = CGSize(width: (self.view.frame.size.width - 15)/2, height: (self.view.frame.size.width - 15)/2)
 
         //layout.minimumInteritemSpacing = 0
     }
