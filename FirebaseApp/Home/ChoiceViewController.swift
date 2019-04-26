@@ -17,9 +17,5 @@ class ChoiceViewController : UIViewController{
         super.viewDidLoad()
         view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
         self.tabBarController?.tabBar.isHidden = true
-        
-        //galleryButton.frame.origin = CGPoint(x: galleryButton.center.x, y: self.view.frame.height/3)
-        //outfitButton.frame.origin = CGPoint(x: outfitButton.center.x, y: 2*self.view.frame.height/3)
-        
     }
 }

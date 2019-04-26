@@ -79,7 +79,7 @@ class GalleryViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
-        cell?.layer.borderColor = UIColor.blue.cgColor
+        cell?.layer.borderColor = UIColor.red.cgColor
         cell?.layer.borderWidth = 5
     }
     
