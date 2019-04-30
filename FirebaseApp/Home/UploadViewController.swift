@@ -2,8 +2,8 @@
 //  UploadViewController.swift
 //  FirebaseApp
 //
-//  Created by Masoud Sasha on 4/7/19.
-//  Copyright © 2019 Robert Canton. All rights reserved.
+//  Created by Masoud Sasha Desi on 4/7/19.
+//  Copyright © Espy Team 8. All rights reserved.
 //
 
 import Foundation
@@ -12,10 +12,13 @@ import Firebase
 
 class UploadViewController:UIViewController{
     
+    @IBOutlet weak var shoesTagButton: UIButton!
+    @IBOutlet weak var bottomTagButton: UIButton!
+    @IBOutlet weak var topTagButton: UIButton!
+    @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var ImageView: UIImageView!
     var previewImage : UIImage?
     var data = Data()
-    public var tag : String = ""
     var fileName : String = "wardrobe.txt"
     
     override func viewDidLoad() {
@@ -23,101 +26,220 @@ class UploadViewController:UIViewController{
         ImageView.image = previewImage
         view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
         self.tabBarController?.tabBar.isHidden = true
+        saveButton.isUserInteractionEnabled = true
+        saveButton.setTitle("Save", for: .normal)
+
+        
     }
     
     @IBAction func topPressed(_ sender: Any) {
         /*CHANGE TAG TO TOP*/
-        tag = "top"
-        Clothing.key_tag = tag
+        Outfit.key_tag = "top"
+        topTagButton.backgroundColor = UIColor.white
+        topTagButton.setTitleColor(primaryColor, for: .normal)
+        bottomTagButton.backgroundColor = UIColor.clear
+        bottomTagButton.setTitleColor(UIColor.white, for: .normal)
+        shoesTagButton.backgroundColor = UIColor.clear
+        shoesTagButton.setTitleColor(UIColor.white, for: .normal)
     }
     
     @IBAction func bottomPressed(_ sender: Any) {
         /*CHANGE TAG TO BOTTOM*/
-        tag = "bottom"
-        Clothing.key_tag = tag
+        Outfit.key_tag = "bottom"
+        bottomTagButton.backgroundColor = UIColor.white
+        bottomTagButton.setTitleColor(primaryColor, for: .normal)
+        topTagButton.backgroundColor = UIColor.clear
+        topTagButton.setTitleColor(UIColor.white, for: .normal)
+        shoesTagButton.backgroundColor = UIColor.clear
+        shoesTagButton.setTitleColor(UIColor.white, for: .normal)
     }
     
     @IBAction func shoesPressed(_ sender: Any) {
         /*CHANGE TAG TO SHOES*/
-        tag = "shoes"
-        Clothing.key_tag = tag
+        Outfit.key_tag = "shoes"
+        shoesTagButton.backgroundColor = UIColor.white
+        shoesTagButton.setTitleColor(primaryColor, for: .normal)
+        topTagButton.backgroundColor = UIColor.clear
+        topTagButton.setTitleColor(UIColor.white, for: .normal)
+        bottomTagButton.backgroundColor = UIColor.clear
+        bottomTagButton.setTitleColor(UIColor.white, for: .normal)
+        
+
     }
     
     
     @IBAction func savePressed(_ sender: Any) {
-        if Clothing.key_tag != ""{
+        saveButton.isUserInteractionEnabled = false
+        saveButton.setTitle("Saving", for: .normal)
+        
+        if Outfit.key_tag != ""{
             let image = ImageView.image
+
             guard let imageData = image?.jpegData(compressionQuality: 0.75) else { return }
             guard let user_email = Auth.auth().currentUser?.email else { return }
-            let storageRef = Storage.storage().reference().child("\(user_email)").child("\(tag)").child("\(Number(tag: tag)).jpg")
-            
-            
-            let metaData = StorageMetadata()
-            metaData.contentType = "image/jpg"
-            storageRef.putData(imageData, metadata: nil, completion: {(metadata, Error) in
-                print(metaData)
-                
-                // alerts don't popup, need to be fixed
-                //let alert = UIAlertController(title: "Tag " + self.tag + " chosen", message: nil, preferredStyle: .alert)
-                //alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
-                    //navigationController?.popViewController(animated: true)
-                    //dismiss(animated: true, completion: nil)
-            })
-            
-            if(Clothing.key_tag == "top")
+
+            if(Outfit.key_tag == "top")
             {
-                Clothing.top_array.append(storageRef)
+                let ref = Database.database().reference().child("user_data").child(Auth.auth().currentUser!.uid)
+                ref.observeSingleEvent(of: .value, with: { snapshot in
+
+                    if !snapshot.exists() { return }
+
+                    let top_number = snapshot.childSnapshot(forPath: "topCount").value
+                    let bottom_number = snapshot.childSnapshot(forPath: "bottomCount").value
+                    let shoes_number = snapshot.childSnapshot(forPath: "shoesCount").value
+                    let outfit_number = snapshot.childSnapshot(forPath: "outfitCount").value
+
+                    Outfit.topCounter = (top_number as! Int)
+                    Outfit.bottomCounter = bottom_number as! Int
+                    Outfit.shoesCounter = shoes_number as! Int
+                    Outfit.outfitCounter = outfit_number as! Int
+                })
+
+                let storageRef = Storage.storage().reference().child("\(user_email)").child("\(Outfit.key_tag)").child("\(Int(Outfit.topCounter) + 1).jpg")
+
+                Outfit.topCounter = Outfit.topCounter + 1
+
+                let data = [
+
+                    "topCount" : Outfit.topCounter,
+                    "bottomCount" : Outfit.bottomCounter,
+                    "shoesCount" : Outfit.shoesCounter,
+                    "outfitCount" : Outfit.outfitCounter
+                ]
+
+                Database.database().reference().child("user_data").child(Auth.auth().currentUser!.uid).updateChildValues(data)
+
+
+                let metaData = StorageMetadata()
+                metaData.contentType = "image/jpg"
+
+                storageRef.putData(imageData, metadata: nil, completion: {(metadata, Error) in
+                    print(metaData)
+
+                    Outfit.top_array.append(storageRef)
+                    Outfit.top_images.append(image!)
+
+                    self.navigationController?.popViewController(animated: true)
+                    self.dismiss(animated: true, completion: nil)
+                })
+
             }
-                
-            else if(Clothing.key_tag == "bottom")
+
+            else if(Outfit.key_tag == "bottom")
             {
-                Clothing.bottom_array.append(storageRef)
+                let ref = Database.database().reference().child("user_data").child(Auth.auth().currentUser!.uid)
+                ref.observeSingleEvent(of: .value, with: { snapshot in
+
+                    if !snapshot.exists() { return }
+
+                    let top_number = snapshot.childSnapshot(forPath: "topCount").value
+                    let bottom_number = snapshot.childSnapshot(forPath: "bottomCount").value
+                    let shoes_number = snapshot.childSnapshot(forPath: "shoesCount").value
+                    let outfit_number = snapshot.childSnapshot(forPath: "outfitCount").value
+
+                    Outfit.topCounter = (top_number as! Int)
+                    Outfit.bottomCounter = bottom_number as! Int
+                    Outfit.shoesCounter = shoes_number as! Int
+                    Outfit.outfitCounter = outfit_number as! Int
+                })
+
+
+
+
+                let storageRef = Storage.storage().reference().child("\(user_email)").child("\(Outfit.key_tag)").child("\(Int(Outfit.bottomCounter) + 1).jpg")
+
+                Outfit.bottomCounter = Outfit.bottomCounter + 1
+
+                let data = [
+
+                    "topCount" : Outfit.topCounter,
+                    "bottomCount" : Outfit.bottomCounter,
+                    "shoesCount" : Outfit.shoesCounter,
+                    "outfitCount" : Outfit.outfitCounter
+                ]
+
+                Database.database().reference().child("user_data").child(Auth.auth().currentUser!.uid).updateChildValues(data)
+
+                let metaData = StorageMetadata()
+                metaData.contentType = "image/jpg"
+
+                storageRef.putData(imageData, metadata: nil, completion: {(metadata, Error) in
+                    print(metaData)
+
+                    Outfit.bottom_array.append(storageRef)
+                    Outfit.bottom_images.append(image!)
+
+                    self.navigationController?.popViewController(animated: true)
+                    self.dismiss(animated: true, completion: nil)
+                })
             }
             else
             {
-                Clothing.shoes_array.append(storageRef)
+                let ref = Database.database().reference().child("user_data").child(Auth.auth().currentUser!.uid)
+                ref.observeSingleEvent(of: .value, with: { snapshot in
+
+                    if !snapshot.exists() { return }
+
+                    let top_number = snapshot.childSnapshot(forPath: "topCount").value
+                    let bottom_number = snapshot.childSnapshot(forPath: "bottomCount").value
+                    let shoes_number = snapshot.childSnapshot(forPath: "shoesCount").value
+                    let outfit_number = snapshot.childSnapshot(forPath: "outfitCount").value
+
+                    Outfit.topCounter = (top_number as! Int)
+                    Outfit.bottomCounter = bottom_number as! Int
+                    Outfit.shoesCounter = shoes_number as! Int
+                    Outfit.outfitCounter = outfit_number as! Int
+                })
+
+
+
+
+
+                let storageRef = Storage.storage().reference().child("\(user_email)").child("\(Outfit.key_tag)").child("\(Int(Outfit.shoesCounter) + 1).jpg")
+
+                Outfit.shoesCounter = Outfit.shoesCounter + 1
+
+                let data = [
+
+                    "topCount" : Outfit.topCounter,
+                    "bottomCount" : Outfit.bottomCounter,
+                    "shoesCount" : Outfit.shoesCounter,
+                    "outfitCount" : Outfit.outfitCounter
+                ]
+
+                Database.database().reference().child("user_data").child(Auth.auth().currentUser!.uid).updateChildValues(data)
+
+                let metaData = StorageMetadata()
+                metaData.contentType = "image/jpg"
+
+                storageRef.putData(imageData, metadata: nil, completion: {(metadata, Error) in
+                    print(metaData)
+
+                    Outfit.shoes_array.append(storageRef)
+                    Outfit.shoes_images.append(image!)
+
+                    self.navigationController?.popViewController(animated: true)
+                    self.dismiss(animated: true, completion: nil)
+                })
             }
         }
-        
+
         else{
-            let alert = UIAlertController(title: "No Tag Chosen", message: nil, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+            let alert = UIAlertController(title: "Alert", message: "No tag chosen", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                switch action.style{
+                case .default:
+                    print("default")
+
+                case .cancel:
+                    print("cancel")
+
+                case .destructive:
+                    print("destructive")
+
+
+                }}))
         }
-    }
-    
-    // this will make sure every file uploaded will start with the value 1,
-    // with respect to the tag chosen
-    func Number(tag: String) -> Int{
-        struct Value{
-            static var topcounter = 0
-            static var bottomcounter = 0
-            static var shoescounter = 0
-        }
-        
-        if(tag == "top")
-        {
-            Value.topcounter += 1
-            return Value.topcounter
-        }
-        else if(tag == "bottom")
-        {
-            Value.bottomcounter += 1
-            return Value.bottomcounter
-        }
-        else{
-            Value.shoescounter += 1
-            return Value.shoescounter
-        }
-    }
-    
-    struct Clothing{
-        static var key_tag = String()
-        static var top_array: [StorageReference] = []
-        static var bottom_array: [StorageReference] = []
-        static var shoes_array: [StorageReference] = []
-        
-        static var top_images: [UIImage] = []
-        static var bottom_images: [UIImage] = []
-        static var shoes_images: [UIImage] = []
     }
 }

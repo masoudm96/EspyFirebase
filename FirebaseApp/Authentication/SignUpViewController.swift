@@ -1,9 +1,9 @@
 //
 //  SignUpViewController.swift
-//  CloudFunctions
+//  FirebaseApp
 //
-//  Created by Robert Canton on 2017-09-13.
-//  Copyright © 2017 Robert Canton. All rights reserved.
+//  Created by Masoud Sasha Desi on 4/7/19.
+//  Copyright © Espy Team 8. All rights reserved.
 //
 
 import Foundation
@@ -198,6 +198,7 @@ class SignUpViewController:UIViewController, UITextFieldDelegate {
                                 
                                 self.saveProfile(username: username, profileImageURL: url!) { success in
                                     if success {
+                                        self.saveOutfitCounters()
                                         self.dismiss(animated: true, completion: nil)
                                     } else {
                                         self.resetForm()
@@ -266,6 +267,18 @@ class SignUpViewController:UIViewController, UITextFieldDelegate {
         databaseRef.setValue(userObject) { error, ref in
             completion(error == nil)
         }
+    }
+    
+    func saveOutfitCounters()
+    {
+        let data = [
+            "topCount" : Outfit.topCounter,
+            "bottomCount" : Outfit.bottomCounter,
+            "shoesCount" : Outfit.shoesCounter,
+            "outfitCount": Outfit.outfitCounter
+        ]
+        
+        Database.database().reference().child("user_data").child(Auth.auth().currentUser!.uid).setValue(data)
     }
 }
 
