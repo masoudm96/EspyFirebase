@@ -121,7 +121,7 @@ class HomeViewController:UIViewController, UIImagePickerControllerDelegate, UINa
     }
     
     func loadImagesFromDataBase(){
-        var bufferImage:UIImage?
+        var bufferImage = UIImage(named: "question.png")
         var file_string:String?
         var reference:StorageReference?
         
@@ -148,6 +148,11 @@ class HomeViewController:UIViewController, UIImagePickerControllerDelegate, UINa
             Outfit.shoesCounter = shoes_number as! Int
             Outfit.outfitCounter = outfit_number as! Int
             
+            Outfit.top_images = [UIImage](repeating: bufferImage!, count: Outfit.topCounter)
+            Outfit.bottom_images = [UIImage](repeating: bufferImage!, count: Outfit.bottomCounter)
+            Outfit.shoes_images = [UIImage](repeating: bufferImage!, count: Outfit.shoesCounter)
+            Outfit.outfit_images = [UIImage](repeating: bufferImage!, count: Outfit.outfitCounter)
+            
             if(Outfit.topCounter > 0){
                 for i in 0 ... Outfit.topCounter - 1{
                     // Reference to an image file in Firebase Storage
@@ -160,7 +165,8 @@ class HomeViewController:UIViewController, UIImagePickerControllerDelegate, UINa
                             //print("Top Image: " + file_string!)
                             bufferImage = UIImage(data: data!)!
                             
-                            Outfit.top_images.append(bufferImage!)
+                            //Outfit.top_images.append(bufferImage!)
+                            Outfit.top_images[i] = bufferImage!
                         }
                     }
                 }
@@ -178,7 +184,8 @@ class HomeViewController:UIViewController, UIImagePickerControllerDelegate, UINa
                             //print("Bottom Image: " + file_string!)
                             bufferImage = UIImage(data: data!)!
                             
-                            Outfit.bottom_images.append(bufferImage!)
+                            //Outfit.bottom_images.append(bufferImage!)
+                            Outfit.bottom_images[i] = bufferImage!
                         }
                     }
                 }
@@ -196,7 +203,8 @@ class HomeViewController:UIViewController, UIImagePickerControllerDelegate, UINa
                             //print("Shoes Image: " + file_string!)
                             bufferImage = UIImage(data: data!)!
                             
-                            Outfit.shoes_images.append(bufferImage!)
+                            //Outfit.shoes_images.append(bufferImage!)
+                            Outfit.shoes_images[i] = bufferImage!
                         }
                     }
                 }
@@ -214,7 +222,8 @@ class HomeViewController:UIViewController, UIImagePickerControllerDelegate, UINa
                             //print("Shoes Image: " + file_string!)
                             bufferImage = UIImage(data: data!)!
                             
-                            Outfit.outfit_images.append(bufferImage!)
+                            //Outfit.outfit_images.append(bufferImage!)
+                            Outfit.outfit_images[i] = bufferImage!
                         }
                     }
                 }

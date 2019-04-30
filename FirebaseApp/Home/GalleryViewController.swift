@@ -13,6 +13,8 @@ import FirebaseUI
 
 class GalleryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     var allImages : NSMutableArray!
+    var sectionNumber: Int!
+    var indexPathNumber: Int!
     
     var sections = ["Top", "Bottom", "Shoe"]
     
@@ -82,6 +84,12 @@ class GalleryViewController: UIViewController, UICollectionViewDelegate, UIColle
         let cell = collectionView.cellForItem(at: indexPath)
         cell?.layer.borderColor = UIColor.red.cgColor
         cell?.layer.borderWidth = 5
+        
+        sectionNumber = indexPath.section
+        indexPathNumber = indexPath.item
+        
+        //print(indexPath.item)
+        //print(indexPath.section)
     }
     
     
@@ -117,9 +125,336 @@ class GalleryViewController: UIViewController, UICollectionViewDelegate, UIColle
         self.present(dialogMessage, animated: true, completion: nil)
     }
     
-    func deleteRecord()
-    {
+    func deleteRecord() {
         
+        guard let user_email = Auth.auth().currentUser?.email else { return }
+        var section:String!
+        
+        if sectionNumber == 0
+        {
+            // this is a top
+            section = "/top"
+            let storageRef = Storage.storage().reference().child("\(user_email)").child(section)
+            
+            // if image array has quantity 1 or is last element, this element being deleted
+            if(indexPathNumber == Outfit.top_images.count - 1)
+            {
+                // DELETING THE FILE
+                // Create a reference to the file to delete
+                let desertRef = storageRef.child("\(indexPathNumber+1).jpg")
+                
+                // Delete the file
+                desertRef.delete { error in
+                    if error != nil {
+                        // Uh-oh, an error occurred!
+                    } else {
+                        // File deleted successfully
+                    }
+                }
+                
+                // DECREMENTING THE INDECIES
+                Outfit.top_images.remove(at: indexPathNumber)
+                Outfit.topCounter = Outfit.topCounter - 1
+                indexPathNumber = -1
+                
+                let data = [
+                    
+                    "topCount" : Outfit.topCounter,
+                    "bottomCount" : Outfit.bottomCounter,
+                    "shoesCount" : Outfit.shoesCounter,
+                    "outfitCount" : Outfit.outfitCounter
+                ]
+                
+                Database.database().reference().child("user_data").child(Auth.auth().currentUser!.uid).updateChildValues(data)
+                self.navigationController?.popViewController(animated: true)
+                self.dismiss(animated: true, completion: nil)
+            }
+            
+            else
+            {
+                print("option2 used")
+                let delete = indexPathNumber
+                
+                while(indexPathNumber < Outfit.topCounter - 1)
+                {
+                    let ref1 = storageRef.child("\(indexPathNumber+1).jpg")
+                    let ref2 = storageRef.child("\(indexPathNumber+2).jpg")
+                    
+                    // Download in memory with a maximum allowed size of 4mb
+                    ref2.getData(maxSize: 1 * 4096 * 4096) { data, error in
+                        if let error = error
+                        {
+                            // Uh-oh, an error occurred!
+                            print(error)
+                        }
+                        else
+                        {
+                            // Data for "images/island.jpg" is returned
+                            let image = UIImage(data: data!)
+                            let imageData = image?.jpegData(compressionQuality: 0.2)
+                            ref1.putData(imageData!, metadata: nil, completion: {(metadata, Error) in
+                                print(metadata as Any)
+                            })
+                        }
+                    }
+                    
+                    if(delete == indexPathNumber)
+                    {
+                        Outfit.top_images.remove(at: indexPathNumber)
+                    }
+                    
+                    indexPathNumber += 1
+                    print("end step reached")
+                }
+                
+                let ref3 = storageRef.child("\(indexPathNumber+1).jpg")
+                print("\(String(describing: indexPathNumber)) +  is being referenced for ref3")
+                // Delete the file
+                ref3.delete { error in
+                    if let error = error {
+                        // Uh-oh, an error occurred!
+                        print(error)
+                    } else {
+                        // File deleted successfully
+                        print("successful deletion")
+                    }
+                }
+                
+                Outfit.topCounter = Outfit.topCounter - 1
+                
+                let data = [
+                    
+                    "topCount" : Outfit.topCounter,
+                    "bottomCount" : Outfit.bottomCounter,
+                    "shoesCount" : Outfit.shoesCounter,
+                    "outfitCount" : Outfit.outfitCounter
+                ]
+                Database.database().reference().child("user_data").child(Auth.auth().currentUser!.uid).updateChildValues(data)
+                
+                self.navigationController?.popViewController(animated: true)
+                self.dismiss(animated: true, completion: nil)
+                
+            }
+            
+            
+        }
+        
+        else if sectionNumber == 1
+        {
+            // this is a bottom
+            section = "/bottom"
+
+            let storageRef = Storage.storage().reference().child("\(user_email)").child(section)
+            
+            // if image array has quantity 1 or is last element, this element being deleted
+            if(indexPathNumber == Outfit.bottom_images.count - 1)
+            {
+                // DELETING THE FILE
+                // Create a reference to the file to delete
+                let desertRef = storageRef.child("\(indexPathNumber+1).jpg")
+                
+                // Delete the file
+                desertRef.delete { error in
+                    if error != nil {
+                        // Uh-oh, an error occurred!
+                    } else {
+                        // File deleted successfully
+                    }
+                }
+                
+                // DECREMENTING THE INDECIES
+                Outfit.bottom_images.remove(at: indexPathNumber)
+                Outfit.bottomCounter = Outfit.bottomCounter - 1
+                indexPathNumber = 0
+                
+                let data = [
+                    
+                    "topCount" : Outfit.topCounter,
+                    "bottomCount" : Outfit.bottomCounter,
+                    "shoesCount" : Outfit.shoesCounter,
+                    "outfitCount" : Outfit.outfitCounter
+                ]
+                
+                Database.database().reference().child("user_data").child(Auth.auth().currentUser!.uid).updateChildValues(data)
+                self.navigationController?.popViewController(animated: true)
+                self.dismiss(animated: true, completion: nil)
+            }
+                
+            else
+            {
+                print("option2 used")
+                let delete: Int = indexPathNumber
+                
+                while(indexPathNumber < Outfit.bottomCounter - 1)
+                {
+                    let ref1 = storageRef.child("\(indexPathNumber+1).jpg")
+                    let ref2 = storageRef.child("\(indexPathNumber+2).jpg")
+                    
+                    // Download in memory with a maximum allowed size of 4mb
+                    ref2.getData(maxSize: 1 * 4096 * 4096) { data, error in
+                        if let error = error
+                        {
+                            // Uh-oh, an error occurred!
+                            print(error)
+                        }
+                        else
+                        {
+                            // Data for "images/island.jpg" is returned
+                            let image = UIImage(data: data!)
+                            let imageData = image?.jpegData(compressionQuality: 0.2)
+                            ref1.putData(imageData!, metadata: nil, completion: {(metadata, Error) in
+                                print(metadata as Any)
+                            })
+                        }
+                    }
+                    
+                    if(delete == indexPathNumber)
+                    {
+                        Outfit.bottom_images.remove(at: indexPathNumber)
+                    }
+                    
+                    indexPathNumber += 1
+                    print("end step reached")
+                }
+                
+                let ref3 = storageRef.child("\(indexPathNumber+1).jpg")
+                print("\(String(describing: indexPathNumber)) +  is being referenced for ref3")
+                // Delete the file
+                ref3.delete { error in
+                    if let error = error {
+                        // Uh-oh, an error occurred!
+                        print(error)
+                    } else {
+                        // File deleted successfully
+                        print("successful deletion")
+                    }
+                }
+                
+                Outfit.bottomCounter = Outfit.bottomCounter - 1
+                
+                let data = [
+                    
+                    "topCount" : Outfit.topCounter,
+                    "bottomCount" : Outfit.bottomCounter,
+                    "shoesCount" : Outfit.shoesCounter,
+                    "outfitCount" : Outfit.outfitCounter
+                ]
+                Database.database().reference().child("user_data").child(Auth.auth().currentUser!.uid).updateChildValues(data)
+                
+                self.navigationController?.popViewController(animated: true)
+                self.dismiss(animated: true, completion: nil)
+                
+            }
+        }
+        
+        else
+        {
+            // this is a shoe
+            section = "/shoes"
+            
+            let storageRef = Storage.storage().reference().child("\(user_email)").child(section)
+            
+            // if image array has quantity 1 or is last element, this element being deleted
+            if(indexPathNumber == Outfit.shoes_images.count - 1)
+            {
+                // DELETING THE FILE
+                // Create a reference to the file to delete
+                let desertRef = storageRef.child("\(indexPathNumber+1).jpg")
+                
+                // Delete the file
+                desertRef.delete { error in
+                    if error != nil {
+                        // Uh-oh, an error occurred!
+                    } else {
+                        // File deleted successfully
+                    }
+                }
+                
+                // DECREMENTING THE INDECIES
+                Outfit.shoes_images.remove(at: indexPathNumber)
+                Outfit.shoesCounter = Outfit.shoesCounter - 1
+                indexPathNumber = 0
+                
+                let data = [
+                    
+                    "topCount" : Outfit.topCounter,
+                    "bottomCount" : Outfit.bottomCounter,
+                    "shoesCount" : Outfit.shoesCounter,
+                    "outfitCount" : Outfit.outfitCounter
+                ]
+                
+                Database.database().reference().child("user_data").child(Auth.auth().currentUser!.uid).updateChildValues(data)
+                self.navigationController?.popViewController(animated: true)
+                self.dismiss(animated: true, completion: nil)
+            }
+                
+            else
+            {
+                print("option2 used")
+                let delete: Int = indexPathNumber
+                
+                while(indexPathNumber < Outfit.shoesCounter - 1)
+                {
+                    let ref1 = storageRef.child("\(indexPathNumber+1).jpg")
+                    let ref2 = storageRef.child("\(indexPathNumber+2).jpg")
+                    
+                    // Download in memory with a maximum allowed size of 4mb
+                    ref2.getData(maxSize: 1 * 4096 * 4096) { data, error in
+                        if let error = error
+                        {
+                            // Uh-oh, an error occurred!
+                            print(error)
+                        }
+                        else
+                        {
+                            // Data for "images/island.jpg" is returned
+                            let image = UIImage(data: data!)
+                            let imageData = image?.jpegData(compressionQuality: 0.2)
+                            ref1.putData(imageData!, metadata: nil, completion: {(metadata, Error) in
+                                print(metadata as Any)
+                            })
+                        }
+                    }
+                    
+                    if(delete == indexPathNumber)
+                    {
+                        Outfit.shoes_images.remove(at: indexPathNumber)
+                    }
+                    
+                    indexPathNumber += 1
+                    print("end step reached")
+                }
+                
+                let ref3 = storageRef.child("\(indexPathNumber+1).jpg")
+                print("\(String(describing: indexPathNumber)) +  is being referenced for ref3")
+                // Delete the file
+                ref3.delete { error in
+                    if let error = error {
+                        // Uh-oh, an error occurred!
+                        print(error)
+                    } else {
+                        // File deleted successfully
+                        print("successful deletion")
+                    }
+                }
+                
+                Outfit.shoesCounter = Outfit.shoesCounter - 1
+                
+                let data = [
+                    
+                    "topCount" : Outfit.topCounter,
+                    "bottomCount" : Outfit.bottomCounter,
+                    "shoesCount" : Outfit.shoesCounter,
+                    "outfitCount" : Outfit.outfitCounter
+                ]
+                Database.database().reference().child("user_data").child(Auth.auth().currentUser!.uid).updateChildValues(data)
+                
+                self.navigationController?.popViewController(animated: true)
+                self.dismiss(animated: true, completion: nil)
+                
+            }
+        }
+
     }
     
 }
