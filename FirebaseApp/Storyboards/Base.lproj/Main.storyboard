@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2cF-Wv-Sll">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2cF-Wv-Sll">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -677,10 +677,6 @@
                                     <action selector="nextButton:" destination="Ev5-2A-rcw" eventType="touchUpInside" id="d7T-f6-Fyu"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bvK-28-YhG">
-                                <rect key="frame" x="349" y="26" width="45" height="30"/>
-                                <state key="normal" title="Delete"/>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6b8-lW-O2P">
                                 <rect key="frame" x="94.666666666666686" y="98" width="186" height="558"/>
                                 <subviews>
@@ -706,8 +702,6 @@
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="1g4-ku-khm" firstAttribute="trailing" secondItem="fh1-Us-4l1" secondAttribute="trailing" constant="100" id="99I-Yw-wLk"/>
-                            <constraint firstItem="bvK-28-YhG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ysq-v7-oTS" secondAttribute="leading" constant="20" symbolic="YES" id="JWT-wH-fW7"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="bvK-28-YhG" secondAttribute="trailing" constant="-35" id="NlZ-Cz-oBl"/>
                             <constraint firstItem="6b8-lW-O2P" firstAttribute="centerX" secondItem="Ysq-v7-oTS" secondAttribute="centerX" id="VqB-4e-ade"/>
                             <constraint firstItem="fh1-Us-4l1" firstAttribute="width" secondItem="wJq-DN-GCr" secondAttribute="width" id="Vr1-UX-hZ9"/>
                             <constraint firstItem="1g4-ku-khm" firstAttribute="bottom" secondItem="fh1-Us-4l1" secondAttribute="bottom" constant="10" id="Wvh-BD-DYF"/>
@@ -715,7 +709,6 @@
                             <constraint firstItem="wJq-DN-GCr" firstAttribute="leading" secondItem="1g4-ku-khm" secondAttribute="leading" constant="100" id="iXu-4C-7KF"/>
                             <constraint firstItem="wJq-DN-GCr" firstAttribute="top" secondItem="6b8-lW-O2P" secondAttribute="bottom" constant="30" id="jUz-mx-WGx"/>
                             <constraint firstItem="6b8-lW-O2P" firstAttribute="top" secondItem="1g4-ku-khm" secondAttribute="top" constant="10" id="oKy-z5-5sC"/>
-                            <constraint firstItem="1g4-ku-khm" firstAttribute="bottom" secondItem="bvK-28-YhG" secondAttribute="bottom" constant="673" id="pQP-bo-Z4T"/>
                             <constraint firstItem="1g4-ku-khm" firstAttribute="bottom" secondItem="wJq-DN-GCr" secondAttribute="bottom" constant="10" id="ubZ-CX-Vgr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1g4-ku-khm"/>
@@ -1048,7 +1041,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="backArrow" width="33.333332061767578" height="33.333332061767578"/>
+        <image name="backArrow" width="33" height="33"/>
         <image name="espy_white_letter" width="626" height="626"/>
         <image name="icons8-dice-50" width="50" height="50"/>
         <image name="userIcon" width="50" height="50"/>
