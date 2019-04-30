@@ -454,7 +454,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AfX-Iy-M5f">
-                                <rect key="frame" x="16" y="237" width="343" height="59"/>
+                                <rect key="frame" x="16" y="236.66666666666663" width="343" height="59"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="30"/>
                                 <state key="normal" title="Upload Image">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -602,7 +602,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZH-AR-97n">
-                                            <rect key="frame" x="11" y="13" width="384" height="24"/>
+                                            <rect key="frame" x="11" y="13" width="345" height="24"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="19"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -633,8 +633,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iQt-7c-Tls"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Gallery" id="NV3-gb-Xcj">
+                        <barButtonItem key="rightBarButtonItem" title="Delete" id="mOW-DO-ATg">
+                            <connections>
+                                <action selector="deleteImage:" destination="pUH-QP-mAq" id="3Jq-fg-zCQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="Wjk-5P-P1u" id="xW8-wv-UJ5"/>
+                        <outlet property="deleteButton" destination="mOW-DO-ATg" id="6Qw-G9-zNh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZZZ-s3-yXx" userLabel="First Responder" sceneMemberID="firstResponder"/>
